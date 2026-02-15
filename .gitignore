@@ -1,3 +1,16 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Sprite / asset pack (troppo pesante, non serve nel repo)
+Tiny Swords (Free Pack)/
+
+# File di import generati da Godot
+*.import
+
+# VSCode
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
