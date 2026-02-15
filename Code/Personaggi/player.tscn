@@ -1,0 +1,264 @@
+[gd_scene load_steps=19 format=3 uid="uid://sykr1cgub8dw"]
+
+[ext_resource type="Script" uid="uid://di1yntkhdq12s" path="res://Code/Personaggi/Player/player.gd" id="1_wbvso"]
+[ext_resource type="Script" uid="uid://bpxo4ikised64" path="res://Code/Personaggi/Player/movimenti.gd" id="2_8jukx"]
+[ext_resource type="Script" uid="uid://hfjytcxdw1d4" path="res://Code/Personaggi/StatPlayer.gd" id="3_qvkuk"]
+[ext_resource type="Texture2D" uid="uid://ci0kd5f64da31" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Run.png" id="4_65kfe"]
+[ext_resource type="Texture2D" uid="uid://cdxa6rrdu0n5a" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Attack1.png" id="5_gpfyv"]
+[ext_resource type="Texture2D" uid="uid://7qcnkpfsnkb4" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Idle.png" id="6_lfnpa"]
+[ext_resource type="Texture2D" uid="uid://c6fuy2ieh47jk" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Guard.png" id="7_qy6k8"]
+[ext_resource type="PackedScene" uid="uid://lh3334j01yv1" path="res://Code/Personaggi/Hurt and Hit Box/hurt_box.tscn" id="8_qy6k8"]
+[ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="9_xytba"]
+[ext_resource type="Script" uid="uid://beh1l0wvs37w" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.gd" id="10_ssywa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65kfe"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_nrk36"]
+resource_name = "Attack1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_gpfyv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333334, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(3, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_ep6o4"]
+resource_name = "Guard"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_qy6k8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xxtdb"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_lfnpa")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xytba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_65kfe")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_ssywa"]
+resource_name = "Run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_65kfe")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvp3c"]
+_data = {
+&"Attack1": SubResource("Animation_nrk36"),
+&"Guard": SubResource("Animation_ep6o4"),
+&"Idle": SubResource("Animation_xxtdb"),
+&"RESET": SubResource("Animation_xytba"),
+&"Run": SubResource("Animation_ssywa")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrk36"]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_wbvso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_65kfe")
+
+[node name="Movimenti" type="Node" parent="." node_paths=PackedStringArray("animatore", "sprite")]
+script = ExtResource("2_8jukx")
+animatore = NodePath("../AnimationPlayer")
+sprite = NodePath("../Sprite2D")
+
+[node name="Stat" type="Node" parent="."]
+script = ExtResource("3_qvkuk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_65kfe")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hvp3c")
+}
+autoplay = "Idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="HurtBox" parent="." instance=ExtResource("8_qy6k8")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_nrk36")
+debug_color = Color(0.08627451, 0.61960787, 0, 0.41960785)
+
+[node name="HitBox" parent="." instance=ExtResource("9_xytba")]
+script = ExtResource("10_ssywa")
