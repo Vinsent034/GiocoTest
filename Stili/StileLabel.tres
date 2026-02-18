@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://wmlaa6luxfiu"]
+
+[ext_resource type="FontFile" uid="uid://4il7r4l8rtgw" path="res://Stili/KAISG___.TTF" id="1_on71c"]
+
+[resource]
+font = ExtResource("1_on71c")
+font_size = 50
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)

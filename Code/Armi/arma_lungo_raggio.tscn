@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://0r2aom22w6yp"]
+
+[ext_resource type="Script" uid="uid://b4hyh1sb08s6w" path="res://Code/Personaggi/Player/Gestore proiettile/trova_posizionatore.gd" id="1_c5pc8"]
+[ext_resource type="PackedScene" uid="uid://bvmxrywhq7cxn" path="res://Code/Proiettile/freccia_player.tscn" id="2_be4sn"]
+
+[node name="ArmaLungoRaggio" type="Node2D" node_paths=PackedStringArray("ray_cast")]
+script = ExtResource("1_c5pc8")
+ray_cast = NodePath("RayCast2D")
+scena_freccia = ExtResource("2_be4sn")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(40, 0)

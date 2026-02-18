@@ -4,6 +4,7 @@ extends Node
 @onready var giocatore: Player = get_parent() as Player
 @export var animatore: AnimationPlayer
 @export var sprite: Sprite2D
+@export var hit_box: HitBox
 
 # --- Stati possibili ---
 enum Stato { IDLE, CORSA, ATTACCO, GUARDIA }
@@ -11,8 +12,10 @@ var stato_corrente: Stato = Stato.IDLE
 
 
 func _ready() -> void:
-	# Quando l'attacco finisce, torna allo stato appropriato
 	animatore.animation_finished.connect(_su_animazione_finita)
+	if hit_box:
+		hit_box.danno = giocatore.potenza_attacco
+		_disabilita_hitbox()
 
 
 func _physics_process(_delta: float) -> void:
@@ -85,12 +88,16 @@ func _cambia_stato(nuovo_stato: Stato) -> void:
 
 	match nuovo_stato:
 		Stato.IDLE:
+			_disabilita_hitbox()
 			animatore.play("Idle")
 		Stato.CORSA:
+			_disabilita_hitbox()
 			animatore.play("Run")
 		Stato.ATTACCO:
+			_abilita_hitbox()
 			animatore.play("Attack1")
 		Stato.GUARDIA:
+			_disabilita_hitbox()
 			animatore.play("Guard")
 
 
@@ -98,11 +105,25 @@ func _cambia_stato(nuovo_stato: Stato) -> void:
 
 func _su_animazione_finita(nome_animazione: StringName) -> void:
 	if nome_animazione == &"Attack1":
-		# Dopo l'attacco torna a idle o corsa
+		_disabilita_hitbox()
 		if _ottieni_direzione_input() != Vector2.ZERO:
 			_cambia_stato(Stato.CORSA)
 		else:
 			_cambia_stato(Stato.IDLE)
+
+
+# --- HitBox ---
+
+func _abilita_hitbox() -> void:
+	if hit_box:
+		hit_box.monitoring = true
+		hit_box.monitorable = true
+
+
+func _disabilita_hitbox() -> void:
+	if hit_box:
+		hit_box.monitoring = false
+		hit_box.monitorable = false
 
 
 # --- Input direzione ---

@@ -1,0 +1,298 @@
+[gd_scene load_steps=21 format=4 uid="uid://lyq13vir1fbg"]
+
+[ext_resource type="Script" uid="uid://be1fric0pon6p" path="res://Code/Bonus/bonus_statistiche_partita.gd" id="1_3fcxr"]
+[ext_resource type="Texture2D" uid="uid://ci4sc2oxsh4rf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Banners/Banner.png" id="1_nckrn"]
+[ext_resource type="Texture2D" uid="uid://fygcovv88rl0" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_05.png" id="2_88rwl"]
+[ext_resource type="Texture2D" uid="uid://c8fr7rx0beivt" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Ribbons/BigRibbons.png" id="2_bp2yt"]
+[ext_resource type="Texture2D" uid="uid://clgw7gmx4vlfb" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Cuore.png" id="3_xbxh7"]
+[ext_resource type="Texture2D" uid="uid://c71yuh4o6ttum" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Elusione.png" id="4_lg8ac"]
+[ext_resource type="Texture2D" uid="uid://c0i8p1hr5xcui" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Fortuna.png" id="5_bp2yt"]
+[ext_resource type="Texture2D" uid="uid://bvlyd63sv72rg" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Velocità.png" id="6_3fcxr"]
+[ext_resource type="Texture2D" uid="uid://b1sao3d4uwscr" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_06.png" id="7_jgvwd"]
+[ext_resource type="Texture2D" uid="uid://c5uybb4y355uw" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Critico.png" id="8_6wtn3"]
+[ext_resource type="Texture2D" uid="uid://bdxcfqo6lfnwb" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_07.png" id="9_lg8ac"]
+[ext_resource type="Texture2D" uid="uid://cs34e5fwdlad5" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_08.png" id="10_bp2yt"]
+[ext_resource type="LabelSettings" uid="uid://wmlaa6luxfiu" path="res://Stili/StileLabel.tres" id="11_3fcxr"]
+[ext_resource type="Texture2D" uid="uid://ceibefd62ubxp" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Buttons/SmallRedSquareButton_Regular.png" id="14_wbogg"]
+[ext_resource type="Texture2D" uid="uid://bbm3j08i75wku" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Buttons/SmallRedSquareButton_Pressed.png" id="15_jrr86"]
+[ext_resource type="Texture2D" uid="uid://d1h8kqh5np4gl" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Buttons/SmallBlueSquareButton_Regular.png" id="16_je4ek"]
+[ext_resource type="Texture2D" uid="uid://cxvfudyx0unrt" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Buttons/SmallBlueSquareButton_Pressed.png" id="17_2mq4r"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cau7w"]
+texture = ExtResource("1_nckrn")
+1:3/size_in_atlas = Vector2i(7, 5)
+1:3/0 = 0
+1:3/0/z_index = 1
+12:3/size_in_atlas = Vector2i(4, 5)
+12:3/0 = 0
+12:3/0/z_index = 1
+20:3/size_in_atlas = Vector2i(6, 5)
+20:3/0 = 0
+20:3/0/z_index = 1
+1:12/size_in_atlas = Vector2i(7, 4)
+1:12/0 = 0
+1:12/0/z_index = 1
+12:12/size_in_atlas = Vector2i(4, 4)
+12:12/0 = 0
+12:12/0/z_index = 1
+20:12/size_in_atlas = Vector2i(6, 4)
+20:12/0 = 0
+20:12/0/z_index = 1
+1:20/size_in_atlas = Vector2i(7, 7)
+1:20/0 = 0
+1:20/0/z_index = 1
+12:20/size_in_atlas = Vector2i(4, 5)
+12:20/0 = 0
+12:20/0/z_index = 1
+20:20/size_in_atlas = Vector2i(6, 7)
+20:20/0 = 0
+20:20/0/z_index = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3fcxr"]
+texture = ExtResource("2_bp2yt")
+1:17/size_in_atlas = Vector2i(7, 7)
+1:17/0 = 0
+12:17/size_in_atlas = Vector2i(4, 7)
+12:17/0 = 0
+20:17/size_in_atlas = Vector2i(7, 7)
+20:17/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wbogg"]
+sources/0 = SubResource("TileSetAtlasSource_cau7w")
+sources/1 = SubResource("TileSetAtlasSource_3fcxr")
+
+[node name="Bonus Statistiche Partite" type="Node2D"]
+script = ExtResource("1_3fcxr")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-285, 37)
+tile_map_data = PackedByteArray("AAAiAAgAAAAMAAwAAAAiAAwAAAAMAAwAAAAiAA8AAAAMAAwAAAAiABIAAAAMAAwAAAAiABYAAAAMAAwAAAAiABoAAAAMAAwAAAAiAB0AAAAMAAwAAAAiACEAAAAMABQAAAAmAAgAAAAMAAwAAAAqAAgAAAAMAAwAAAAuAAgAAAAMAAwAAAAxAAgAAAAMAAwAAAAxAAwAAAAMAAwAAAAmAAwAAAAMAAwAAAAqAAwAAAAMAAwAAAAtAAwAAAAMAAwAAAAmABAAAAAMAAwAAAAqABAAAAAMAAwAAAAuABAAAAAMAAwAAAAxABAAAAAMAAwAAAAmABQAAAAMAAwAAAApABQAAAAMAAwAAAAsABQAAAAMAAwAAAAvABQAAAAMAAwAAAAxABQAAAAMAAwAAAAmABgAAAAMAAwAAAAqABgAAAAMAAwAAAAuABgAAAAMAAwAAAAxABgAAAAMAAwAAAAkABwAAAAMAAwAAAAoABwAAAAMAAwAAAAsABwAAAAMAAwAAAAwABwAAAAMAAwAAAAxABwAAAAMAAwAAAAmACAAAAAMAAwAAAAqACAAAAAMAAwAAAAsACAAAAAMAAwAAAAxACAAAAAMAAwAAAAwACAAAAAMAAwAAAAmACEAAAAMABQAAAApACEAAAAMABQAAAAtACEAAAAMABQAAAAxACEAAAAMABQAAAAdACIAAAABABQAAAAdAB0AAAABAAwAAAAdABoAAAABAAwAAAAdABYAAAABAAwAAAAdABIAAAABAAwAAAAdAA4AAAABAAwAAAAdAAoAAAABAAwAAAAdAAgAAAABAAwAAAA2ACIAAAAUABQAAAA2AB0AAAAUAAwAAAA2ABkAAAAUAAwAAAA2ABUAAAAUAAwAAAA2ABEAAAAUAAwAAAA2AA0AAAAUAAwAAAA2AAkAAAAUAAwAAAA2AAgAAAAUAAwAAAA2AAQAAAAUAAMAAAAdAAQAAAABAAMAAAAiAAQAAAAMAAMAAAAmAAQAAAAMAAMAAAAqAAQAAAAMAAMAAAAuAAQAAAAMAAMAAAAyAAQAAAAMAAMAAAAmAAEAAQAMABEAAAAqAAEAAQAMABEAAAAuAAEAAQAMABEAAAAjAAEAAQAMABEAAAAeAAEAAQABABEAAAA1AAEAAQAUABEAAAAwAAEAAQAMABEAAABBAAcAAAABAAMAAABGAAcAAAAMAAMAAABKAAcAAAAMAAMAAABOAAcAAAAMAAMAAABTAAcAAAAUAAMAAABBAAsAAAABAAwAAABBAA8AAAABAAwAAABBABMAAAABAAwAAABGAAsAAAAMAAwAAABKAAsAAAAMAAwAAABOAAsAAAAMAAwAAABSAAsAAAAMAAwAAABTAAsAAAAUAAwAAABTAA8AAAAUAAwAAABTABMAAAAUAAwAAABGAA8AAAAMAAwAAABKAA8AAAAMAAwAAABOAA8AAAAMAAwAAABGABMAAAAMAAwAAABKABMAAAAMAAwAAABOABMAAAAMAAwAAABBABgAAAABABQAAABGABcAAAAMABQAAABKABcAAAAMABQAAABOABcAAAAMABQAAABTABgAAAAUABQAAAA=")
+tile_set = SubResource("TileSet_wbogg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TileMapLayer"]
+z_index = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+
+[node name="Tool03" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+position = Vector2(498, 159)
+scale = Vector2(1, 1.006)
+texture = ExtResource("2_88rwl")
+
+[node name="Tool04" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+z_index = 1
+position = Vector2(488.50003, 315.479)
+scale = Vector2(0.48437548, 0.48728174)
+texture = ExtResource("2_88rwl")
+
+[node name="Cuore" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+position = Vector2(494, 79.00002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_xbxh7")
+
+[node name="Elusione" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+position = Vector2(499, 385)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_lg8ac")
+
+[node name="Fortuna" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+position = Vector2(494, 533)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_bp2yt")
+
+[node name="Velocità" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+position = Vector2(587, 339)
+scale = Vector2(0.15, 0.149327)
+texture = ExtResource("6_3fcxr")
+offset = Vector2(-653.3335, 820)
+
+[node name="Icon06" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+position = Vector2(495, 231)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_jgvwd")
+
+[node name="Critico" type="Sprite2D" parent="TileMapLayer/VBoxContainer"]
+position = Vector2(497.75, 306.25)
+scale = Vector2(0.16899998, 0.16899998)
+texture = ExtResource("8_6wtn3")
+
+[node name="Tasto Aumenta" type="VBoxContainer" parent="TileMapLayer"]
+z_index = 1
+offset_left = 839.502
+offset_top = 59.554
+offset_right = 911.502
+offset_bottom = 761.554
+scale = Vector2(0.7, 0.7)
+theme_override_constants/separation = 33
+
+[node name="Sprite2D" type="Button" parent="TileMapLayer/Tasto Aumenta"]
+layout_mode = 2
+icon = ExtResource("9_lg8ac")
+flat = true
+
+[node name="Tool03" type="Button" parent="TileMapLayer/Tasto Aumenta"]
+layout_mode = 2
+icon = ExtResource("9_lg8ac")
+flat = true
+
+[node name="Tool04" type="Button" parent="TileMapLayer/Tasto Aumenta"]
+z_index = 1
+layout_mode = 2
+icon = ExtResource("9_lg8ac")
+flat = true
+
+[node name="Cuore" type="Button" parent="TileMapLayer/Tasto Aumenta"]
+layout_mode = 2
+icon = ExtResource("9_lg8ac")
+flat = true
+
+[node name="Elusione" type="Button" parent="TileMapLayer/Tasto Aumenta"]
+layout_mode = 2
+icon = ExtResource("9_lg8ac")
+flat = true
+
+[node name="Fortuna" type="Button" parent="TileMapLayer/Tasto Aumenta"]
+layout_mode = 2
+icon = ExtResource("9_lg8ac")
+flat = true
+
+[node name="Velocità" type="Button" parent="TileMapLayer/Tasto Aumenta"]
+layout_mode = 2
+icon = ExtResource("9_lg8ac")
+flat = true
+
+[node name="Tasto Decrementa" type="VBoxContainer" parent="TileMapLayer"]
+z_index = 1
+offset_left = 782.503
+offset_top = 59.554
+offset_right = 854.503
+offset_bottom = 761.554
+scale = Vector2(0.7, 0.7)
+theme_override_constants/separation = 33
+
+[node name="Sprite2D" type="Button" parent="TileMapLayer/Tasto Decrementa"]
+layout_mode = 2
+icon = ExtResource("10_bp2yt")
+flat = true
+
+[node name="Tool03" type="Button" parent="TileMapLayer/Tasto Decrementa"]
+layout_mode = 2
+icon = ExtResource("10_bp2yt")
+flat = true
+
+[node name="Tool04" type="Button" parent="TileMapLayer/Tasto Decrementa"]
+z_index = 1
+layout_mode = 2
+icon = ExtResource("10_bp2yt")
+flat = true
+
+[node name="Cuore" type="Button" parent="TileMapLayer/Tasto Decrementa"]
+layout_mode = 2
+icon = ExtResource("10_bp2yt")
+flat = true
+
+[node name="Elusione" type="Button" parent="TileMapLayer/Tasto Decrementa"]
+layout_mode = 2
+icon = ExtResource("10_bp2yt")
+flat = true
+
+[node name="Fortuna" type="Button" parent="TileMapLayer/Tasto Decrementa"]
+layout_mode = 2
+icon = ExtResource("10_bp2yt")
+flat = true
+
+[node name="Velocità" type="Button" parent="TileMapLayer/Tasto Decrementa"]
+layout_mode = 2
+icon = ExtResource("10_bp2yt")
+flat = true
+
+[node name="Nome Bonus" type="VBoxContainer" parent="TileMapLayer"]
+z_index = 1
+offset_left = 544.503
+offset_top = 50.554
+offset_right = 698.503
+offset_bottom = 730.554
+rotation = 0.0013833528
+theme_override_constants/separation = 23
+
+[node name="Sprite2D" type="Label" parent="TileMapLayer/Nome Bonus"]
+layout_mode = 2
+text = "Max Hp : "
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Tool03" type="Label" parent="TileMapLayer/Nome Bonus"]
+layout_mode = 2
+text = "Attack : "
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Tool04" type="Label" parent="TileMapLayer/Nome Bonus"]
+z_index = 1
+layout_mode = 2
+text = "Diefesa : "
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Cuore" type="Label" parent="TileMapLayer/Nome Bonus"]
+layout_mode = 2
+text = "Critico : "
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Elusione" type="Label" parent="TileMapLayer/Nome Bonus"]
+layout_mode = 2
+text = "Elusione: "
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Velocità" type="Label" parent="TileMapLayer/Nome Bonus"]
+layout_mode = 2
+text = "Velocità: "
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Fortuna" type="Label" parent="TileMapLayer/Nome Bonus"]
+layout_mode = 2
+text = "Velocità: "
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Label" type="Label" parent="TileMapLayer"]
+offset_left = 572.5825
+offset_top = -17.146088
+offset_right = 686.5825
+offset_bottom = 36.853912
+text = "Bonus : 10"
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Resetta" type="TextureButton" parent="."]
+z_index = 1
+offset_left = 944.0
+offset_top = 136.0
+offset_right = 1072.0
+offset_bottom = 264.0
+texture_normal = ExtResource("14_wbogg")
+texture_pressed = ExtResource("15_jrr86")
+
+[node name="Label" type="Label" parent="Resetta"]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 32.0
+offset_right = 29.0
+offset_bottom = 86.0
+text = "Restta : costo"
+label_settings = ExtResource("11_3fcxr")
+
+[node name="Conferma" type="TextureButton" parent="."]
+z_index = 1
+offset_left = 944.0
+offset_top = 256.0
+offset_right = 1072.0
+offset_bottom = 384.0
+texture_normal = ExtResource("16_je4ek")
+texture_pressed = ExtResource("17_2mq4r")
+
+[node name="Label2" type="Label" parent="Conferma"]
+layout_mode = 0
+offset_left = -160.0
+offset_top = 32.0
+offset_right = -21.0
+offset_bottom = 86.0
+text = "Applica"
+label_settings = ExtResource("11_3fcxr")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg5eo4s7dcgr5"]
+
+[ext_resource type="Script" uid="uid://d4fgqykiovidc" path="res://Code/Proiettile/proiettile.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="2_hitbox"]
+[ext_resource type="Texture2D" uid="uid://d3ar5hnfo3ypt" path="res://Tiny Swords (Free Pack)/Units/Black Units/Archer/Arrow.png" id="3_ekag6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddxen"]
+radius = 5.0
+height = 44.0
+
+[node name="Freccia" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="HitBox" parent="." instance=ExtResource("2_hitbox")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ddxen")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_ekag6")

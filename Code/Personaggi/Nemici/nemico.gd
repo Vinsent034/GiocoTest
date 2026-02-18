@@ -9,12 +9,20 @@ class_name Nemico
 @export var raggio_attacco: float = 30.0
 @export var ritardo_attacco: float = 1.0
 
+# --- Drop alla morte ---
+@export var drop_oro: PackedScene
+@export var drop_exp: PackedScene
+@export var drop_bistecca: PackedScene
+@export_range(0.0, 100.0, 1.0) var probabilita_bistecca: float = 20.0  # % di drop
+
 var salute: int
 var _timer_attacco: float = 0.0
 
 # --- Riferimenti ---
 @export var animatore: AnimationPlayer
 @export var sprite: Sprite2D
+@export var hit_box: HitBox
+@export var marker_danno: Marker2D
 var bersaglio: Player = null
 
 # --- Macchina a stati ---
@@ -23,7 +31,10 @@ var stato_corrente: Stato = Stato.IDLE
 
 
 func _ready() -> void:
+	add_to_group("Nemici")
 	salute = salute_massima
+	if hit_box:
+		_disabilita_hitbox()
 	if animatore:
 		animatore.animation_finished.connect(_su_animazione_finita)
 
@@ -88,18 +99,32 @@ func _gestisci_attacco() -> void:
 
 func subisci_danno(danno: int) -> void:
 	salute -= danno
+	if marker_danno:
+		MostraValore.crea(marker_danno, danno, "Danno")
 	if salute <= 0:
 		muori()
 
 
 func muori() -> void:
-	queue_free()
+	call_deferred("_spawna_drop")
+	call_deferred("queue_free")
 
 
-func infliggi_danno() -> void:
-	# Il danno ora viene gestito dal sistema HitBox/HurtBox.
-	# Questo metodo resta come hook per le classi figlie (es. effetti, suoni).
-	pass
+func _spawna_drop() -> void:
+	var parent = get_parent()
+	if not parent:
+		return
+	var bistecca_effettiva: PackedScene = null
+	if drop_bistecca and randf() * 100.0 < probabilita_bistecca:
+		bistecca_effettiva = drop_bistecca
+	var offsets := [Vector2(-12, -8), Vector2(12, -8), Vector2(0, 10)]
+	var i := 0
+	for scena in [drop_oro, drop_exp, bistecca_effettiva]:
+		if scena:
+			var oggetto = scena.instantiate()
+			parent.add_child(oggetto)
+			oggetto.global_position = global_position + offsets[i]
+		i += 1
 
 
 # --- Utilità ---
@@ -125,11 +150,14 @@ func _cambia_stato(nuovo_stato: Stato) -> void:
 
 	match nuovo_stato:
 		Stato.IDLE:
+			_disabilita_hitbox()
 			_riproduci_animazione("Idle")
 		Stato.INSEGUIMENTO:
+			_disabilita_hitbox()
 			_riproduci_animazione("Run")
 		Stato.ATTACCO:
 			_timer_attacco = ritardo_attacco
+			_abilita_hitbox()
 			_riproduci_animazione("Attack1")
 
 
@@ -138,9 +166,21 @@ func _riproduci_animazione(nome: String) -> void:
 		animatore.play(nome)
 
 
+func _abilita_hitbox() -> void:
+	if hit_box:
+		hit_box.monitoring = true
+		hit_box.monitorable = true
+
+
+func _disabilita_hitbox() -> void:
+	if hit_box:
+		hit_box.monitoring = false
+		hit_box.monitorable = false
+
+
 func _su_animazione_finita(nome_animazione: StringName) -> void:
 	if nome_animazione == &"Attack1":
-		infliggi_danno()
+		_disabilita_hitbox()
 		if bersaglio and _distanza_dal_bersaglio() <= raggio_inseguimento:
 			_cambia_stato(Stato.INSEGUIMENTO)
 		else:

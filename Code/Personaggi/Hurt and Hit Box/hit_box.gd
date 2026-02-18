@@ -13,5 +13,6 @@ func _ready() -> void:
 
 
 func _su_area_entrata(area: Area2D) -> void:
+	#print("[HitBox] area_entered: ", area.name, " is HurtBox: ", area is HurtBox, " parent: ", area.get_parent().name)
 	if area is HurtBox:
 		colpito.emit(area)

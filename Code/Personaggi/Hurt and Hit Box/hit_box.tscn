@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://b3f3tooxn6a1f"]
+[gd_scene load_steps=2 format=3 uid="uid://b3f3tooxn6a1f"]
+
+[ext_resource type="Script" uid="uid://beh1l0wvs37w" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.gd" id="1_6vwct"]
 
 [node name="HitBox" type="Area2D"]
+script = ExtResource("1_6vwct")

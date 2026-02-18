@@ -1,18 +1,108 @@
-[gd_scene load_steps=19 format=3 uid="uid://sykr1cgub8dw"]
+[gd_scene load_steps=39 format=3 uid="uid://sykr1cgub8dw"]
 
 [ext_resource type="Script" uid="uid://di1yntkhdq12s" path="res://Code/Personaggi/Player/player.gd" id="1_wbvso"]
 [ext_resource type="Script" uid="uid://bpxo4ikised64" path="res://Code/Personaggi/Player/movimenti.gd" id="2_8jukx"]
-[ext_resource type="Script" uid="uid://hfjytcxdw1d4" path="res://Code/Personaggi/StatPlayer.gd" id="3_qvkuk"]
 [ext_resource type="Texture2D" uid="uid://ci0kd5f64da31" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Run.png" id="4_65kfe"]
 [ext_resource type="Texture2D" uid="uid://cdxa6rrdu0n5a" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Attack1.png" id="5_gpfyv"]
+[ext_resource type="Texture2D" uid="uid://clinar3e4j5xp" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Monk/Heal_Effect.png" id="5_xytba"]
 [ext_resource type="Texture2D" uid="uid://7qcnkpfsnkb4" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Idle.png" id="6_lfnpa"]
 [ext_resource type="Texture2D" uid="uid://c6fuy2ieh47jk" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Guard.png" id="7_qy6k8"]
+[ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="8_hitbox"]
 [ext_resource type="PackedScene" uid="uid://lh3334j01yv1" path="res://Code/Personaggi/Hurt and Hit Box/hurt_box.tscn" id="8_qy6k8"]
-[ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="9_xytba"]
-[ext_resource type="Script" uid="uid://beh1l0wvs37w" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.gd" id="10_ssywa"]
+[ext_resource type="LabelSettings" uid="uid://wmlaa6luxfiu" path="res://Stili/StileLabel.tres" id="8_xxtdb"]
+[ext_resource type="Script" uid="uid://dunuhoew2ckoo" path="res://Code/Personaggi/Player/barra_exp.gd" id="12_barra_exp"]
+[ext_resource type="Script" uid="uid://b56caa6fa56e3" path="res://Code/Personaggi/Player/stat_player.gd" id="13_stat_player"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_65kfe"]
 radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssywa"]
+atlas = ExtResource("5_xytba")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrk36"]
+atlas = ExtResource("5_xytba")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxtdb"]
+atlas = ExtResource("5_xytba")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep6o4"]
+atlas = ExtResource("5_xytba")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvp3c"]
+atlas = ExtResource("5_xytba")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s6e0"]
+atlas = ExtResource("5_xytba")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guqp1"]
+atlas = ExtResource("5_xytba")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25ecq"]
+atlas = ExtResource("5_xytba")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcole"]
+atlas = ExtResource("5_xytba")
+region = Rect2(1536, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ghm"]
+atlas = ExtResource("5_xytba")
+region = Rect2(1728, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q1ew"]
+atlas = ExtResource("5_xytba")
+region = Rect2(1920, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ot7uf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssywa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrk36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxtdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep6o4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvp3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s6e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guqp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25ecq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcole")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ghm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q1ew")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 15.0
+}]
 
 [sub_resource type="Animation" id="Animation_nrk36"]
 resource_name = "Attack1"
@@ -222,26 +312,77 @@ _data = {
 &"Run": SubResource("Animation_ssywa")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nrk36"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.15, 0.15, 0.2, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.35, 0.45, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
+bg_color = Color(0.3, 0.85, 0.35, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xytba"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qy6k8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exp_bg"]
+bg_color = Color(0.12, 0.1, 0.2, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.25, 0.5, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exp_fill"]
+bg_color = Color(0.4, 0.3, 0.9, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hitbox"]
+radius = 12.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_wbvso")
+difesa = 100
+schivata = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_65kfe")
 
-[node name="Movimenti" type="Node" parent="." node_paths=PackedStringArray("animatore", "sprite")]
+[node name="Movimenti" type="Node" parent="." node_paths=PackedStringArray("animatore", "sprite", "hit_box")]
 script = ExtResource("2_8jukx")
 animatore = NodePath("../AnimationPlayer")
 sprite = NodePath("../Sprite2D")
-
-[node name="Stat" type="Node" parent="."]
-script = ExtResource("3_qvkuk")
+hit_box = NodePath("../HitBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_65kfe")
 hframes = 6
+
+[node name="Animazioni" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ot7uf")
+animation = &"new_animation"
+frame = 11
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -252,13 +393,105 @@ autoplay = "Idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
+[node name="BarraVita" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = -273.0
+offset_top = -154.0
+offset_right = -233.0
+offset_bottom = -146.33333
+scale = Vector2(3, 3)
+theme_override_styles/background = SubResource("StyleBoxFlat_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
+value = 100.0
+show_percentage = false
+
+[node name="LabelPV" type="Label" parent="BarraVita"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.5
+offset_top = -1.4999542
+offset_right = 82.5
+offset_bottom = 44.833374
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.17, 0.17)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 5
+text = "100"
+label_settings = ExtResource("8_xxtdb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Marker2D" type="Marker2D" parent="BarraVita"]
+z_index = -1
+position = Vector2(91.00003, 48.999992)
+scale = Vector2(0.3, 0.3)
+
+[node name="TimerInvincibilita" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Raccoglitore" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raccoglitore"]
+shape = SubResource("CircleShape2D_xytba")
+
 [node name="HurtBox" parent="." instance=ExtResource("8_qy6k8")]
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_nrk36")
-debug_color = Color(0.08627451, 0.61960787, 0, 0.41960785)
+shape = SubResource("CircleShape2D_qy6k8")
+debug_color = Color(0, 0.6448386, 0.27909693, 0.41960785)
 
-[node name="HitBox" parent="." instance=ExtResource("9_xytba")]
-script = ExtResource("10_ssywa")
+[node name="BarraExp" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = -244.18964
+offset_top = -122.54212
+offset_right = -212.18964
+offset_bottom = -117.54212
+scale = Vector2(3, 3)
+theme_override_styles/background = SubResource("StyleBoxFlat_exp_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_exp_fill")
+max_value = 2.0
+show_percentage = false
+script = ExtResource("12_barra_exp")
+
+[node name="LabelLivello" type="Label" parent="BarraExp"]
+z_index = 1
+layout_mode = 0
+offset_left = -12.0
+offset_top = -2.0
+offset_right = 63.0
+offset_bottom = 52.0
+scale = Vector2(0.15, 0.15)
+theme_override_colors/font_color = Color(0.85, 0.75, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 5
+text = "Lv 1"
+label_settings = ExtResource("8_xxtdb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HitBox" parent="." instance=ExtResource("8_hitbox")]
+collision_layer = 2
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(15, 0)
+shape = SubResource("CircleShape2D_hitbox")
+
+[node name="StatPlayer" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("13_stat_player")
+player = NodePath("..")
