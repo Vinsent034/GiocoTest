@@ -35,7 +35,7 @@ func trova_nemico_piu_vicino() -> Nemico:
 	var piu_vicino: Nemico = null
 	var distanza_minima := INF
 	for nodo in nemici:
-		if nodo is Nemico:
+		if nodo is Nemico and nodo.visible and nodo.is_physics_processing():
 			var dist := global_position.distance_to(nodo.global_position)
 			if dist < distanza_minima and dist <= raggio_mira:
 				distanza_minima = dist

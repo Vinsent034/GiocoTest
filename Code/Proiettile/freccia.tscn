@@ -10,6 +10,7 @@ height = 44.0
 
 [node name="Freccia" type="Node2D"]
 script = ExtResource("1_script")
+colore_scia = Color(0.86900306, 0.85976404, 0.8542943, 0.8)
 
 [node name="HitBox" parent="." instance=ExtResource("2_hitbox")]
 

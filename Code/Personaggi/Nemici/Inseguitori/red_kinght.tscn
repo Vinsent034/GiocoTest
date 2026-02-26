@@ -1,15 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://1u5khb1k1f47"]
+[gd_scene load_steps=12 format=3 uid="uid://ccxth78bo5dj4"]
 
-[ext_resource type="Script" uid="uid://dwhmwnd3l30wm" path="res://Code/Personaggi/Nemici/nemico_inseguitore.gd" id="1_gie00"]
-[ext_resource type="PackedScene" uid="uid://d1qx5jmedw7c5" path="res://Code/Raccoglibili/Oro.tscn" id="2_v8gpm"]
-[ext_resource type="Texture2D" uid="uid://dhn608lxg5j04" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Attack1.png" id="3_05mnt"]
-[ext_resource type="PackedScene" uid="uid://bsal1dey5fmt3" path="res://Code/Raccoglibili/Exp.tscn" id="3_fy15q"]
-[ext_resource type="PackedScene" uid="uid://siixhv5xm6wc" path="res://Code/Raccoglibili/bistecca.tscn" id="4_txorp"]
-[ext_resource type="Texture2D" uid="uid://tq35p83jotri" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Guard.png" id="4_yo2oe"]
-[ext_resource type="Texture2D" uid="uid://d3atl2o2p4ndt" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Idle.png" id="5_wvfnm"]
-[ext_resource type="Texture2D" uid="uid://dc7fiq1c6gcw0" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Run.png" id="6_v8gpm"]
-[ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="7_05mnt"]
-[ext_resource type="Script" uid="uid://dhu64fyetubeg" path="res://Code/Personaggi/Hurt and Hit Box/hurt_box.gd" id="7_yo2oe"]
+[ext_resource type="PackedScene" uid="uid://1u5khb1k1f47" path="res://Code/Personaggi/Nemici/NemicoInseguitore.tscn" id="1_sif14"]
+[ext_resource type="Texture2D" uid="uid://d3atl2o2p4ndt" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Idle.png" id="2_1l2bl"]
+[ext_resource type="Texture2D" uid="uid://dhn608lxg5j04" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Attack1.png" id="3_p06fr"]
+[ext_resource type="Texture2D" uid="uid://tq35p83jotri" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Guard.png" id="4_rox5i"]
+[ext_resource type="Texture2D" uid="uid://dc7fiq1c6gcw0" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Run.png" id="5_jcklh"]
 
 [sub_resource type="Animation" id="Animation_nrk36"]
 resource_name = "Attack1"
@@ -24,7 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_05mnt")]
+"values": [ExtResource("3_p06fr")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -64,7 +59,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_yo2oe")]
+"values": [ExtResource("4_rox5i")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -104,7 +99,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_wvfnm")]
+"values": [ExtResource("2_1l2bl")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -143,7 +138,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_wvfnm")]
+"values": [ExtResource("2_1l2bl")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -169,6 +164,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [8]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_ssywa"]
 resource_name = "Run"
@@ -183,7 +190,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_v8gpm")]
+"values": [ExtResource("5_jcklh")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -219,54 +226,16 @@ _data = {
 &"Run": SubResource("Animation_ssywa")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gie00"]
-radius = 9.055386
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wvfnm"]
-
-[node name="Inseguitore" type="CharacterBody2D" node_paths=PackedStringArray("animatore", "sprite", "hit_box", "marker_danno")]
-script = ExtResource("1_gie00")
-raggio_inseguimento = 1.0
-raggio_attacco = 1.0
-ritardo_attacco = 0.1
-drop_oro = ExtResource("2_v8gpm")
-drop_exp = ExtResource("3_fy15q")
-drop_bistecca = ExtResource("4_txorp")
-probabilita_bistecca = 50.0
+[node name="RedKinght" node_paths=PackedStringArray("animatore") instance=ExtResource("1_sif14")]
+potenza_attacco = 50
 animatore = NodePath("AnimationPlayer")
-sprite = NodePath("Sprite2D")
-hit_box = NodePath("HitBox")
-marker_danno = NodePath("Marker2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_wvfnm")
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_1l2bl")
 hframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 &"": SubResource("AnimationLibrary_hvp3c")
 }
 autoplay = "Idle"
-
-[node name="HitBox" parent="." instance=ExtResource("7_05mnt")]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_gie00")
-
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 8
-script = ExtResource("7_yo2oe")
-metadata/_custom_type_script = "uid://dhu64fyetubeg"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_wvfnm")
-debug_color = Color(0.9971555, 0, 0.18161646, 0.41960785)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-5, -12)

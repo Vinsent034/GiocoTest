@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://hw7dn8u41xkv"]
+
+[ext_resource type="Script" uid="uid://dcj3cdpvn1b1e" path="res://Code/OgettiBattaglia/TipiEfettoBattaglia/gestore_esplosioni.gd" id="1_xbn0k"]
+[ext_resource type="PackedScene" uid="uid://drtehy731tjnf" path="res://Code/OgettiBattaglia/TipiEfettoBattaglia/esplosione.tscn" id="2_1iu0t"]
+
+[node name="Gestore esplosioni" type="Node2D" node_paths=PackedStringArray("esplosioni")]
+script = ExtResource("1_xbn0k")
+esplosioni = [NodePath("Esplosione"), NodePath("Esplosione2"), NodePath("Esplosione3"), NodePath("Esplosione4"), NodePath("Esplosione5"), NodePath("Esplosione6"), NodePath("Esplosione7"), NodePath("Esplosione8"), NodePath("Esplosione9"), NodePath("Esplosione10")]
+
+[node name="Esplosione" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione2" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione3" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione4" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione5" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione6" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione7" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione8" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione9" parent="." instance=ExtResource("2_1iu0t")]
+
+[node name="Esplosione10" parent="." instance=ExtResource("2_1iu0t")]

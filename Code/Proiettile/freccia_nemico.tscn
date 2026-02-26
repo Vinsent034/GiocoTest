@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://iquitiqjx38w"]
+[gd_scene load_steps=3 format=3 uid="uid://iquitiqjx38w"]
 
 [ext_resource type="PackedScene" uid="uid://bg5eo4s7dcgr5" path="res://Code/Proiettile/freccia.tscn" id="1_epd07"]
+[ext_resource type="Script" uid="uid://dxfj0krp005dr" path="res://Code/Proiettile/freccia_nemico.gd" id="2_script"]
 
 [node name="FrecciaNemico" instance=ExtResource("1_epd07")]
-durata_vita = 0.2
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_script")
+velocita = 250.0
+gittata = 500.0
 
 [node name="HitBox" parent="." index="0"]
-collision_layer = 16
+collision_layer = 4
 collision_mask = 2

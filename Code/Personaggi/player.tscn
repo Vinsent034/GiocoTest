@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://sykr1cgub8dw"]
+[gd_scene load_steps=42 format=3 uid="uid://sykr1cgub8dw"]
 
 [ext_resource type="Script" uid="uid://di1yntkhdq12s" path="res://Code/Personaggi/Player/player.gd" id="1_wbvso"]
 [ext_resource type="Script" uid="uid://bpxo4ikised64" path="res://Code/Personaggi/Player/movimenti.gd" id="2_8jukx"]
@@ -7,11 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://clinar3e4j5xp" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Monk/Heal_Effect.png" id="5_xytba"]
 [ext_resource type="Texture2D" uid="uid://7qcnkpfsnkb4" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Idle.png" id="6_lfnpa"]
 [ext_resource type="Texture2D" uid="uid://c6fuy2ieh47jk" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Warrior/Warrior_Guard.png" id="7_qy6k8"]
+[ext_resource type="Texture2D" uid="uid://olt0dj3mhpbj" path="res://Tiny Swords (Free Pack)/Particle FX/Dust_02.png" id="8_ep6o4"]
 [ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="8_hitbox"]
 [ext_resource type="PackedScene" uid="uid://lh3334j01yv1" path="res://Code/Personaggi/Hurt and Hit Box/hurt_box.tscn" id="8_qy6k8"]
 [ext_resource type="LabelSettings" uid="uid://wmlaa6luxfiu" path="res://Stili/StileLabel.tres" id="8_xxtdb"]
 [ext_resource type="Script" uid="uid://dunuhoew2ckoo" path="res://Code/Personaggi/Player/barra_exp.gd" id="12_barra_exp"]
 [ext_resource type="Script" uid="uid://b56caa6fa56e3" path="res://Code/Personaggi/Player/stat_player.gd" id="13_stat_player"]
+[ext_resource type="PackedScene" uid="uid://0r2aom22w6yp" path="res://Code/Armi/arma_lungo_raggio.tscn" id="15_ep6o4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_65kfe"]
 radius = 8.0
@@ -144,6 +146,45 @@ tracks/2/keys = {
 "values": [4]
 }
 
+[sub_resource type="Animation" id="Animation_hvp3c"]
+resource_name = "Compari"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_ep6o4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 9]
+}
+
 [sub_resource type="Animation" id="Animation_ep6o4"]
 resource_name = "Guard"
 loop_mode = 1
@@ -262,6 +303,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [6]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_ssywa"]
 resource_name = "Run"
@@ -306,6 +359,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hvp3c"]
 _data = {
 &"Attack1": SubResource("Animation_nrk36"),
+&"Compari": SubResource("Animation_hvp3c"),
 &"Guard": SubResource("Animation_ep6o4"),
 &"Idle": SubResource("Animation_xxtdb"),
 &"RESET": SubResource("Animation_xytba"),
@@ -358,9 +412,10 @@ corner_radius_bottom_left = 2
 radius = 12.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 0
 script = ExtResource("1_wbvso")
-difesa = 100
-schivata = 100
+difesa = 2
+schivata = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_65kfe")
@@ -433,7 +488,7 @@ position = Vector2(91.00003, 48.999992)
 scale = Vector2(0.3, 0.3)
 
 [node name="TimerInvincibilita" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [node name="Raccoglitore" type="Area2D" parent="."]
@@ -446,6 +501,7 @@ shape = SubResource("CircleShape2D_xytba")
 [node name="HurtBox" parent="." instance=ExtResource("8_qy6k8")]
 collision_layer = 2
 collision_mask = 4
+cooldown_colpo = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_qy6k8")
@@ -495,3 +551,6 @@ shape = SubResource("CircleShape2D_hitbox")
 [node name="StatPlayer" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("13_stat_player")
 player = NodePath("..")
+
+[node name="ArmaLungoRaggio" parent="." instance=ExtResource("15_ep6o4")]
+position = Vector2(0, -12)

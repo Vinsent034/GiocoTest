@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FrecciaResource" load_steps=3 format=3 uid="uid://dw6erfqd7bput"]
+
+[ext_resource type="Script" uid="uid://bvrov0qcy5as2" path="res://Code/Risorse/RisorsaProiettile/freccia_resource.gd" id="1_cd4or"]
+[ext_resource type="Texture2D" uid="uid://ck5h81076p7u5" path="res://Tiny Swords (Free Pack)/Units/Red Units/Archer/Arrow.png" id="2_d1dai"]
+
+[resource]
+script = ExtResource("1_cd4or")
+sprite = ExtResource("2_d1dai")
+colore_scia = Color(0.73333335, 0.039215688, 0, 0.654902)
+metadata/_custom_type_script = "uid://bvrov0qcy5as2"

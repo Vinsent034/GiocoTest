@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnje7t5fhtk82"]
+
+[ext_resource type="Texture2D" uid="uid://mt0seuawvs2j" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Swords/Swords.png" id="1_7uvoc"]
+[ext_resource type="Script" uid="uid://cssaovxqjjgc8" path="res://Code/OgettiBattaglia/TipiEfettoBattaglia/spada_celeste.gd" id="1_do42b"]
+[ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="2_do42b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bx3jk"]
+radius = 41.0
+height = 332.0
+
+[sub_resource type="Animation" id="Animation_mfc0x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Corpo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5707964]
+}
+
+[sub_resource type="Animation" id="Animation_bccq6"]
+resource_name = "ColpoDx"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Corpo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.0943951023931953, 1.5707963267948966]
+}
+
+[sub_resource type="Animation" id="Animation_7uvoc"]
+resource_name = "ColpoSx"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Corpo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0471975511965976, -4.71238898038469]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kd5fo"]
+_data = {
+&"ColpoDx": SubResource("Animation_bccq6"),
+&"ColpoSx": SubResource("Animation_7uvoc"),
+&"RESET": SubResource("Animation_mfc0x")
+}
+
+[node name="SpadaCeleste" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_do42b")
+
+[node name="Corpo" type="Node2D" parent="."]
+position = Vector2(0, -10)
+rotation = -1.5707964
+
+[node name="Base" type="Sprite2D" parent="Corpo"]
+texture = ExtResource("1_7uvoc")
+hframes = 3
+vframes = 5
+
+[node name="Base2" type="Sprite2D" parent="Corpo"]
+position = Vector2(85, 0)
+texture = ExtResource("1_7uvoc")
+hframes = 3
+vframes = 5
+frame = 1
+
+[node name="Base3" type="Sprite2D" parent="Corpo"]
+position = Vector2(147, 0)
+texture = ExtResource("1_7uvoc")
+hframes = 3
+vframes = 5
+frame = 1
+
+[node name="Base4" type="Sprite2D" parent="Corpo"]
+position = Vector2(210, 0)
+texture = ExtResource("1_7uvoc")
+hframes = 3
+vframes = 5
+frame = 1
+
+[node name="Base5" type="Sprite2D" parent="Corpo"]
+position = Vector2(251, 0)
+texture = ExtResource("1_7uvoc")
+hframes = 3
+vframes = 5
+frame = 2
+
+[node name="HitBox" parent="Corpo" instance=ExtResource("2_do42b")]
+rotation = 2.0943952
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpo/HitBox"]
+position = Vector2(-57.5, -99.59292)
+rotation = -0.5235988
+shape = SubResource("CapsuleShape2D_bx3jk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kd5fo")
+}
+autoplay = "RESET"

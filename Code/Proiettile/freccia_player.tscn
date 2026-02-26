@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvmxrywhq7cxn"]
+[gd_scene load_steps=3 format=3 uid="uid://bvmxrywhq7cxn"]
 
 [ext_resource type="PackedScene" uid="uid://bg5eo4s7dcgr5" path="res://Code/Proiettile/freccia.tscn" id="1_m3ovp"]
+[ext_resource type="Script" uid="uid://17iybeu244uh" path="res://Code/Proiettile/freccia_player.gd" id="2_script"]
 
 [node name="FrecciaPlayer" instance=ExtResource("1_m3ovp")]
-scale = Vector2(0.5, 0.5)
-velocita = 100.0
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_script")
 gittata = 500.0
 
 [node name="HitBox" parent="." index="0"]

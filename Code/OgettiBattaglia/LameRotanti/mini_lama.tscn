@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba3te81soy0gf"]
+
+[ext_resource type="Script" uid="uid://qhmfq31libn3" path="res://Code/OgettiBattaglia/LameRotanti/mini_lama.gd" id="1_3g8mu"]
+[ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="1_q7qds"]
+[ext_resource type="Texture2D" uid="uid://criuxv4nv00d3" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Tools/Tool_03.png" id="2_3g8mu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dchbi"]
+radius = 12.0415945
+
+[node name="MiniLama" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_3g8mu")
+
+[node name="HitBox" parent="." instance=ExtResource("1_q7qds")]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_dchbi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3g8mu")

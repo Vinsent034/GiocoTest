@@ -29,7 +29,7 @@ func _on_exp_raccolta(valore: int) -> void:
 		exp_per_livello = int(exp_base_per_livello * pow(fattore_crescita, livello - 1))
 		max_value = exp_per_livello
 		label_livello.text = "Lv %d" % livello
-		livello_su.emit(1)
+		emit_signal("livello_su", 1)
 		ManagerRaccolata.livello_su.emit(1)
 	_aggiorna_barra()
 

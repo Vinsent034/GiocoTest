@@ -1,0 +1,166 @@
+[gd_scene load_steps=25 format=3 uid="uid://dv35i78wisl1b"]
+
+[ext_resource type="Script" uid="uid://bcrd6lx2sl65u" path="res://Code/Personaggi/Nemici/nemico_lanciatore.gd" id="1_muhhi"]
+[ext_resource type="PackedScene" uid="uid://d1qx5jmedw7c5" path="res://Code/Raccoglibili/Oro.tscn" id="3_ultsm"]
+[ext_resource type="PackedScene" uid="uid://bsal1dey5fmt3" path="res://Code/Raccoglibili/Exp.tscn" id="4_6coxk"]
+[ext_resource type="PackedScene" uid="uid://siixhv5xm6wc" path="res://Code/Raccoglibili/bistecca.tscn" id="5_kuknv"]
+[ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="7_ahekm"]
+[ext_resource type="Script" uid="uid://dhu64fyetubeg" path="res://Code/Personaggi/Hurt and Hit Box/hurt_box.gd" id="8_i0j8j"]
+[ext_resource type="Resource" uid="uid://dw6erfqd7bput" path="res://Code/Risorse/RisorsaProiettile/FrecciaNormale.tres" id="9_xeoi4"]
+[ext_resource type="Texture2D" uid="uid://olt0dj3mhpbj" path="res://Tiny Swords (Free Pack)/Particle FX/Dust_02.png" id="10_ultsm"]
+[ext_resource type="Texture2D" uid="uid://b4f6smwetjpfp" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Archer/Archer_Idle.png" id="11_ahekm"]
+[ext_resource type="PackedScene" uid="uid://iquitiqjx38w" path="res://Code/Proiettile/freccia_nemico.tscn" id="13_km6fe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6coxk"]
+radius = 3.1622777
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gie00"]
+radius = 9.055386
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wvfnm"]
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2kxa"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m03cq"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba4pb"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6a04"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5uxw"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6yi3"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gob5q"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myq62"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p04f"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx7vj"]
+atlas = ExtResource("10_ultsm")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6coxk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2kxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m03cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba4pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6a04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5uxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6yi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gob5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myq62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p04f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx7vj")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Compari",
+"speed": 15.0
+}]
+
+[node name="NemicoLanciatore" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hit_box", "hurt_box", "hurt_box_collision", "hit_box_collision", "marker_danno", "sprite_comparsa")]
+z_index = 1
+collision_layer = 0
+script = ExtResource("1_muhhi")
+potenza_attacco = 10
+raggio_inseguimento = 300.0
+raggio_attacco = 250.0
+ritardo_attacco = 1.5
+drop_oro = ExtResource("3_ultsm")
+drop_exp = ExtResource("4_6coxk")
+drop_bistecca = ExtResource("5_kuknv")
+probabilita_bistecca = 50.0
+sprite = NodePath("Sprite2D")
+hit_box = NodePath("HitBox")
+hurt_box = NodePath("HurtBox")
+hurt_box_collision = NodePath("HitBox/CollisionShape2D")
+hit_box_collision = NodePath("HurtBox/CollisionShape2D")
+marker_danno = NodePath("Marker2D")
+sprite_comparsa = NodePath("AnimazioniSpeciali")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6coxk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_ahekm")
+hframes = 6
+
+[node name="HitBox" parent="." instance=ExtResource("7_ahekm")]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_gie00")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("8_i0j8j")
+metadata/_custom_type_script = "uid://dhu64fyetubeg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_wvfnm")
+debug_color = Color(0.9971555, 0, 0.18161646, 0.41960785)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-5, -12)
+
+[node name="FrecciaNemico" parent="." instance=ExtResource("13_km6fe")]
+risorsa = ExtResource("9_xeoi4")
+
+[node name="FrecciaNemico2" parent="." instance=ExtResource("13_km6fe")]
+risorsa = ExtResource("9_xeoi4")
+
+[node name="FrecciaNemico3" parent="." instance=ExtResource("13_km6fe")]
+risorsa = ExtResource("9_xeoi4")
+
+[node name="AnimazioniSpeciali" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_6coxk")
+animation = &"Compari"
+frame = 10
+frame_progress = 1.0

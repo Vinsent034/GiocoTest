@@ -26,10 +26,27 @@ func _gestisci_inseguimento() -> void:
 		return
 
 	var direzione := global_position.direction_to(bersaglio.global_position)
-	velocity = direzione * velocita
+	velocity = direzione * velocita + _calcola_forza_separazione()
 	move_and_slide()
 
 	if sprite and abs(direzione.x) > 0.1:
 		sprite.flip_h = direzione.x < 0.0
 
 	_riproduci_animazione("Run")
+
+
+func _cambia_stato(nuovo_stato: Stato) -> void:
+	stato_corrente = nuovo_stato
+
+	match nuovo_stato:
+		Stato.IDLE:
+			_disabilita_hitbox()
+			_riproduci_animazione("Idle")
+		Stato.INSEGUIMENTO:
+			# L'inseguitore NON disabilita hitbox durante inseguimento
+			_abilita_hitbox()
+			_riproduci_animazione("Run")
+		Stato.ATTACCO:
+			_timer_attacco = ritardo_attacco
+			_abilita_hitbox()
+			_riproduci_animazione("Attack1")

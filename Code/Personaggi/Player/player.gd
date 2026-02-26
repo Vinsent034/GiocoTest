@@ -17,6 +17,7 @@ var _tween_barra: Tween
 @onready var label_pv: Label = $BarraVita/LabelPV
 @onready var marker_danno: Marker2D = $BarraVita/Marker2D
 @onready var hurt_box: Area2D = $HurtBox
+@onready var hurt_box_shape: CollisionShape2D = $HurtBox/CollisionShape2D
 @onready var timer_invincibilita: Timer = $TimerInvincibilita
 @onready var animazioni: AnimatedSprite2D = $Animazioni
 
@@ -40,20 +41,24 @@ func subisci_danno(danno: int) -> void:
 	if schivata > 0 and randi_range(1, 100) <= schivata:
 		_mostra_valore(0, "Schivata")
 		return
-	# Difesa: riduce il danno, minimo 1
-	var danno_finale := maxi(danno - difesa, 1)
+	# Difesa: riduce il danno, minimo 0
+	var danno_finale := maxi(danno - difesa, 0)
 	salute -= danno_finale
 	_aggiorna_barra_vita()
 	_flash_bianco()
 	_mostra_valore(danno_finale, "DannoPlayer")
 	hurt_box.set_deferred("monitorable", false)
+	hurt_box.set_deferred("monitoring", false)
+	hurt_box_shape.set_deferred("disabled", true)
 	timer_invincibilita.start()
 	if salute <= 0:
 		muori()
 
 
 func _on_timer_invincibilita_timeout() -> void:
+	hurt_box.monitoring = true
 	hurt_box.monitorable = true
+	hurt_box_shape.disabled = false
 
 
 func _aggiorna_barra_vita() -> void:

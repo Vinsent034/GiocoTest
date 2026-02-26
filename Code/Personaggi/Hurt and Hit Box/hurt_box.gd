@@ -11,6 +11,13 @@ func _ready() -> void:
 	area_entered.connect(_su_area_entrata)
 
 
+func _physics_process(_delta: float) -> void:
+	if not monitoring:
+		return
+	for area in get_overlapping_areas():
+		_su_area_entrata(area)
+
+
 func _su_area_entrata(area: Area2D) -> void:
 	if not area is HitBox:
 		return
