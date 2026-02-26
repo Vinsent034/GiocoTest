@@ -1,10 +1,13 @@
 extends Node
 
-# --- Scene nemici ---
+# --- Scene nemici (fallback) ---
 @export var scena_inseguitore: PackedScene
 @export var scena_lanciatore: PackedScene
 @export var scena_scattatore: PackedScene
 @export var scena_base: PackedScene
+
+# --- Nemici disponibili dall'arena ---
+var nemici_disponibili_arena: Array[PackedScene] = []
 
 # --- Configurazione wave ---
 @export var nemici_wave_iniziale: int = 5        # nemici nella wave 1
@@ -27,8 +30,31 @@ signal wave_iniziata(numero: int)
 signal wave_completata(numero: int)
 
 
-func _ready() -> void:
+func _su_arena_pronta(arena: Node) -> void:
+	# Leggi tutte le scene nemiche dall'arena (scena_nemico_1 a scena_nemico_8)
+	nemici_disponibili_arena.clear()
+	
+	for i in range(1, 9):
+		var nome_proprieta = "scena_nemico_" + str(i)
+		if arena.has_property(nome_proprieta):
+			var scena = arena.get(nome_proprieta)
+			if scena is PackedScene:
+				nemici_disponibili_arena.append(scena)
+	
 	call_deferred("_avvia_wave")
+
+
+func _ready() -> void:
+	# Connettiti al segnale della mappa per ricevere i nemici disponibili
+	var mappa = get_tree().get_first_node_in_group("Arena")
+	if not mappa:
+		mappa = get_parent()
+	
+	if mappa and mappa.has_signal("arena_pronta"):
+		mappa.arena_pronta.connect(_su_arena_pronta)
+	else:
+		# Se non c'è segnale, usa le export locali
+		call_deferred("_avvia_wave")
 
 
 func _process(delta: float) -> void:
@@ -69,15 +95,22 @@ func _su_nemico_morto() -> void:
 # --- Selezione scena ---
 
 func _scegli_scena() -> PackedScene:
+	# Usa i nemici dell'arena se disponibili, altrimenti fallback alle export locali
 	var disponibili: Array[PackedScene] = []
-	if scena_inseguitore:
-		disponibili.append(scena_inseguitore)
-	if scena_lanciatore:
-		disponibili.append(scena_lanciatore)
-	if scena_scattatore:
-		disponibili.append(scena_scattatore)
-	if scena_base:
-		disponibili.append(scena_base)
+	
+	if not nemici_disponibili_arena.is_empty():
+		disponibili = nemici_disponibili_arena.duplicate()
+	else:
+		# Fallback: usa le export dello spawner
+		if scena_inseguitore:
+			disponibili.append(scena_inseguitore)
+		if scena_lanciatore:
+			disponibili.append(scena_lanciatore)
+		if scena_scattatore:
+			disponibili.append(scena_scattatore)
+		if scena_base:
+			disponibili.append(scena_base)
+	
 	if disponibili.is_empty():
 		return null
 	return disponibili[randi() % disponibili.size()]

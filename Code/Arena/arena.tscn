@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://br7r45v8xb3cv"]
+[gd_scene load_steps=26 format=4 uid="uid://br7r45v8xb3cv"]
 
 [ext_resource type="PackedScene" uid="uid://sykr1cgub8dw" path="res://Code/Personaggi/player.tscn" id="1_eue3s"]
 [ext_resource type="Texture2D" uid="uid://b8ygv8yr3r25l" path="res://Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color1.png" id="1_x3he3"]
@@ -7,13 +7,19 @@
 [ext_resource type="Script" uid="uid://c408vn12yfiqc" path="res://Code/ContaOroGame/contatore_oro_partita.gd" id="7_gy0xo"]
 [ext_resource type="Texture2D" uid="uid://dvtbqj5ufop4y" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 1.png" id="7_p24i5"]
 [ext_resource type="LabelSettings" uid="uid://wmlaa6luxfiu" path="res://Stili/StileLabel.tres" id="8_2h0a4"]
+[ext_resource type="Script" uid="uid://bko8kiudj8vyt" path="res://Code/Arena/UI_nemici_da_sconfiggere.gd" id="9_cld1x"]
 [ext_resource type="Script" uid="uid://p4ua3lhwr5xc" path="res://Code/Personaggi/Nemici/spawner_nemici.gd" id="9_gy0xo"]
+[ext_resource type="Texture2D" uid="uid://f8ofi6kavggy" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="9_twy00"]
 [ext_resource type="PackedScene" uid="uid://ccxth78bo5dj4" path="res://Code/Personaggi/Nemici/Inseguitori/red_kinght.tscn" id="10_7cic3"]
+[ext_resource type="Texture2D" uid="uid://dah5byxsaslu0" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_07.png" id="11_8kbx7"]
 [ext_resource type="PackedScene" uid="uid://lyq13vir1fbg" path="res://Code/Bonus/bonus_statistiche_partita.tscn" id="11_kj5iw"]
 [ext_resource type="PackedScene" uid="uid://b8al0litn41jd" path="res://Code/Personaggi/Nemici/Tiratore/arcere_rosso.tscn" id="11_rt144"]
 [ext_resource type="PackedScene" uid="uid://bnp76de6jjg1e" path="res://Code/Personaggi/Nemici/Nemico_Scattatore.tscn" id="12_rt144"]
-[ext_resource type="Script" uid="uid://dcj3cdpvn1b1e" path="res://Code/OgettiBattaglia/TipiEfettoBattaglia/gestore_esplosioni.gd" id="13_twy00"]
-[ext_resource type="PackedScene" uid="uid://drtehy731tjnf" path="res://Code/OgettiBattaglia/TipiEfettoBattaglia/esplosione.tscn" id="14_107eq"]
+[ext_resource type="Texture2D" uid="uid://bibgl0r16wded" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_08.png" id="12_yk8mp"]
+[ext_resource type="Texture2D" uid="uid://5jh0mn5av3ie" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_12.png" id="13_u6nsw"]
+[ext_resource type="Texture2D" uid="uid://ch36qdv6cgehk" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_13.png" id="14_lrdia"]
+[ext_resource type="Texture2D" uid="uid://b0ql2bslcbbly" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_17.png" id="15_xdx3f"]
+[ext_resource type="Texture2D" uid="uid://ccdp0i0rla52r" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_16.png" id="16_xuoex"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eue3s"]
 texture = ExtResource("1_x3he3")
@@ -1073,6 +1079,80 @@ label_settings = ExtResource("8_2h0a4")
 visible = false
 position = Vector2(-82, 0)
 
+[node name="TargetNemiciDaSconfigere" type="Node" parent="SetLayer"]
+
+[node name="NemiciDaSconfiggere" type="VBoxContainer" parent="SetLayer/TargetNemiciDaSconfigere" node_paths=PackedStringArray("icone_nemici", "LabelNumeroNemici")]
+offset_left = 1019.0
+offset_top = 89.0
+offset_right = 1275.0
+offset_bottom = 999.0
+scale = Vector2(0.3, 0.3)
+theme_override_constants/separation = -38
+script = ExtResource("9_cld1x")
+texture_nemici = Array[Texture2D]([ExtResource("9_twy00"), ExtResource("11_8kbx7"), ExtResource("12_yk8mp"), ExtResource("13_u6nsw"), ExtResource("14_lrdia"), ExtResource("15_xdx3f"), ExtResource("16_xuoex"), ExtResource("9_twy00")])
+icone_nemici = [NodePath("TextureRect"), NodePath("TextureRect2"), NodePath("TextureRect3"), NodePath("TextureRect4")]
+LabelNumeroNemici = [NodePath("TextureRect/Label"), NodePath("TextureRect3/Label"), NodePath("TextureRect3/Label"), NodePath("TextureRect4/Label")]
+
+[node name="TextureRect" type="TextureRect" parent="SetLayer/TargetNemiciDaSconfigere/NemiciDaSconfiggere"]
+layout_mode = 2
+texture = ExtResource("9_twy00")
+
+[node name="Label" type="Label" parent="SetLayer/TargetNemiciDaSconfigere/NemiciDaSconfiggere/TextureRect"]
+layout_mode = 0
+offset_left = 263.33325
+offset_top = 70.0
+offset_right = 328.33325
+offset_bottom = 181.0
+scale = Vector2(2, 2)
+text = "1 /2
+"
+label_settings = ExtResource("8_2h0a4")
+
+[node name="TextureRect2" type="TextureRect" parent="SetLayer/TargetNemiciDaSconfigere/NemiciDaSconfiggere"]
+layout_mode = 2
+texture = ExtResource("9_twy00")
+
+[node name="Label" type="Label" parent="SetLayer/TargetNemiciDaSconfigere/NemiciDaSconfiggere/TextureRect2"]
+layout_mode = 0
+offset_left = 263.33325
+offset_top = 70.0
+offset_right = 328.33325
+offset_bottom = 181.0
+scale = Vector2(2, 2)
+text = "1 /2
+"
+label_settings = ExtResource("8_2h0a4")
+
+[node name="TextureRect3" type="TextureRect" parent="SetLayer/TargetNemiciDaSconfigere/NemiciDaSconfiggere"]
+layout_mode = 2
+texture = ExtResource("9_twy00")
+
+[node name="Label" type="Label" parent="SetLayer/TargetNemiciDaSconfigere/NemiciDaSconfiggere/TextureRect3"]
+layout_mode = 0
+offset_left = 263.33325
+offset_top = 70.0
+offset_right = 328.33325
+offset_bottom = 181.0
+scale = Vector2(2, 2)
+text = "1 /2
+"
+label_settings = ExtResource("8_2h0a4")
+
+[node name="TextureRect4" type="TextureRect" parent="SetLayer/TargetNemiciDaSconfigere/NemiciDaSconfiggere"]
+layout_mode = 2
+texture = ExtResource("9_twy00")
+
+[node name="Label" type="Label" parent="SetLayer/TargetNemiciDaSconfigere/NemiciDaSconfiggere/TextureRect4"]
+layout_mode = 0
+offset_left = 263.33325
+offset_top = 70.0
+offset_right = 328.33325
+offset_bottom = 181.0
+scale = Vector2(2, 2)
+text = "1 /2
+"
+label_settings = ExtResource("8_2h0a4")
+
 [node name="SpaunerNemici" type="Node" parent="." node_paths=PackedStringArray("punti_spawn")]
 script = ExtResource("9_gy0xo")
 scena_inseguitore = ExtResource("10_7cic3")
@@ -1093,30 +1173,3 @@ position = Vector2(749, 438)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
 position = Vector2(684, 274)
-
-[node name="GestoreEsplosioni" type="Node2D" parent="." node_paths=PackedStringArray("player", "esplosioni")]
-script = ExtResource("13_twy00")
-player = NodePath("../Player")
-esplosioni = [NodePath("Esplosione"), NodePath("Esplosione2"), NodePath("Esplosione3"), NodePath("Esplosione4"), NodePath("Esplosione5"), NodePath("Esplosione6"), NodePath("Esplosione7"), NodePath("Esplosione8"), NodePath("Esplosione9"), NodePath("Esplosione10")]
-contatore_attive = 10
-metadata/_custom_type_script = "uid://dcj3cdpvn1b1e"
-
-[node name="Esplosione" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione2" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione3" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione4" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione5" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione6" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione7" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione8" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione9" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
-
-[node name="Esplosione10" parent="GestoreEsplosioni" instance=ExtResource("14_107eq")]
