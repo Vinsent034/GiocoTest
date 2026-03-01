@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Nemico
 
+# --- ID nemico ---
+@export var IDnemico: int = 0
+
 # --- Risorsa nemico ---
 @export var risorsa_nemico: NemicoResource
 
@@ -46,6 +49,7 @@ var _drop_rilasciato: bool = false
 
 func _ready() -> void:
 	add_to_group("Nemici")
+	collision_mask = 1
 
 	if risorsa_nemico:
 		velocita = risorsa_nemico.velocita
@@ -162,6 +166,7 @@ func muori() -> void:
 func _distruggi() -> void:
 	remove_from_group("Nemici")
 	emit_signal("morto")
+	Global.rilascio_id.emit(IDnemico)
 	queue_free()
 
 

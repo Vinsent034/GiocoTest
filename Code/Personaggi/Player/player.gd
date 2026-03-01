@@ -12,10 +12,11 @@ class_name Player
 @export var fortuna: int = 0                   # bonus fortuna
 var salute: int = salute_massima               # salute corrente
 var _tween_barra: Tween
+var _larghezza_vita_max: float
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var barra_vita: ProgressBar = $BarraVita
-@onready var label_pv: Label = $BarraVita/LabelPV
-@onready var marker_danno: Marker2D = $BarraVita/Marker2D
+@onready var fill_vita: Control = $FillVita
+@onready var label_vita: Label = $Label
+@onready var marker_danno: Marker2D = $Marker2D
 @onready var hurt_box: Area2D = $HurtBox
 @onready var hurt_box_shape: CollisionShape2D = $HurtBox/CollisionShape2D
 @onready var timer_invincibilita: Timer = $TimerInvincibilita
@@ -28,9 +29,9 @@ func _ready() -> void:
 		var mat = ShaderMaterial.new()
 		mat.shader = shader
 		sprite.material = mat
-	barra_vita.max_value = salute_massima
-	barra_vita.value = salute
-	label_pv.text = "%d" % salute
+	salute = salute_massima
+	_larghezza_vita_max = fill_vita.size.x
+	label_vita.text = "%d/%d" % [salute, salute_massima]
 	timer_invincibilita.timeout.connect(_on_timer_invincibilita_timeout)
 	ManagerRaccolata.bistecca_raccolta.connect(_on_bistecca_raccolta)
 
@@ -62,24 +63,18 @@ func _on_timer_invincibilita_timeout() -> void:
 
 
 func _aggiorna_barra_vita() -> void:
+	var percentuale := float(salute) / float(salute_massima)
+	var larghezza_target := _larghezza_vita_max * percentuale
 	if _tween_barra and _tween_barra.is_valid():
 		_tween_barra.kill()
 	_tween_barra = create_tween()
-	_tween_barra.tween_property(barra_vita, "value", float(salute), 0.4)\
+	_tween_barra.tween_method(_aggiorna_fill_vita, fill_vita.size.x, larghezza_target, 0.4)\
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	# Cambia colore in base alla percentuale di vita
-	var percentuale := float(salute) / float(salute_massima)
-	var colore: Color
-	if percentuale > 0.5:
-		colore = Color(0.3, 0.9, 0.3, 1)   # verde
-	elif percentuale > 0.25:
-		colore = Color(0.95, 0.8, 0.2, 1)   # giallo
-	else:
-		colore = Color(0.9, 0.2, 0.2, 1)    # rosso
-	var stile_fill := barra_vita.get_theme_stylebox("fill") as StyleBoxFlat
-	if stile_fill:
-		stile_fill.bg_color = colore
-	label_pv.text = "%d" % salute
+	label_vita.text = "%d/%d" % [salute, salute_massima]
+
+
+func _aggiorna_fill_vita(larghezza: float) -> void:
+	fill_vita.size.x = larghezza
 
 
 func _mostra_valore(valore: int, tipo: String) -> void:

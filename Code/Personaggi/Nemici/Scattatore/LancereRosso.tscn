@@ -1,13 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8al0litn41jd"]
+[gd_scene load_steps=15 format=3 uid="uid://q0fa6eg81v5o"]
 
-[ext_resource type="PackedScene" uid="uid://dv35i78wisl1b" path="res://Code/Personaggi/Nemici/NemicoLanciatore.tscn" id="1_8vhip"]
-[ext_resource type="Resource" uid="uid://bsumoc52gnmmh" path="res://Code/Risorse/RisorsaNemico/Tiratori/ArcereRosso.tres" id="2_lot1j"]
-[ext_resource type="Texture2D" uid="uid://djqla8vd17ng" path="res://Tiny Swords (Free Pack)/Units/Red Units/Archer/Archer_Shoot.png" id="3_8vhip"]
-[ext_resource type="Texture2D" uid="uid://tq35p83jotri" path="res://Tiny Swords (Free Pack)/Units/Red Units/Warrior/Warrior_Guard.png" id="3_bckes"]
-[ext_resource type="Texture2D" uid="uid://d2ct3vgg6ye5u" path="res://Tiny Swords (Free Pack)/Units/Red Units/Archer/Archer_Idle.png" id="4_lot1j"]
-[ext_resource type="Texture2D" uid="uid://c0kh35q3gguja" path="res://Tiny Swords (Free Pack)/Units/Red Units/Archer/Archer_Run.png" id="5_8vhip"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lot1j"]
+[ext_resource type="PackedScene" uid="uid://bnp76de6jjg1e" path="res://Code/Personaggi/Nemici/Nemico_Scattatore.tscn" id="1_rgfqi"]
+[ext_resource type="Texture2D" uid="uid://cbmhf245iwnoy" path="res://Tiny Swords (Free Pack)/Units/Red Units/Lancer/Lancer_Right_Attack.png" id="2_7bubl"]
+[ext_resource type="Resource" uid="uid://dm2bpm70dmmro" path="res://Code/Risorse/RisorsaNemico/Inseguitori/LancereRosso.tres" id="2_soku4"]
+[ext_resource type="Texture2D" uid="uid://c2afag2q6yn2f" path="res://Tiny Swords (Free Pack)/Units/Red Units/Lancer/Lancer_Right_Defence.png" id="3_soku4"]
+[ext_resource type="Texture2D" uid="uid://cdg84ig2thu4g" path="res://Tiny Swords (Free Pack)/Units/Red Units/Lancer/Lancer_Idle.png" id="4_rg3xy"]
+[ext_resource type="Texture2D" uid="uid://bcix5pvphiwao" path="res://Tiny Swords (Free Pack)/Units/Red Units/Lancer/Lancer_Run.png" id="5_mnb1y"]
 
 [sub_resource type="Animation" id="Animation_nrk36"]
 resource_name = "Attack1"
@@ -22,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_8vhip")]
+"values": [ExtResource("2_7bubl")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -31,10 +29,10 @@ tracks/1/path = NodePath("Sprite2D:frame_coords")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.03333334, 0.13333334),
+"times": PackedFloat32Array(0, 0.23333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2i(0, 0), Vector2i(3, 0)]
+"values": [Vector2i(1, 0), Vector2i(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -46,7 +44,86 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_m3dml"]
+resource_name = "Carica"
+length = 0.51
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_soku4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(2, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_pgmmj"]
+resource_name = "Compari"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7bubl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
 }
 
 [sub_resource type="Animation" id="Animation_ep6o4"]
@@ -62,7 +139,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_bckes")]
+"values": [ExtResource("3_soku4")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -102,7 +179,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_lot1j")]
+"values": [ExtResource("4_rg3xy")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -114,7 +191,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [12]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -141,7 +218,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_lot1j")]
+"values": [ExtResource("4_rg3xy")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -165,12 +242,23 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [12]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_ssywa"]
 resource_name = "Run"
-length = 0.3
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -182,7 +270,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_8vhip")]
+"values": [ExtResource("5_mnb1y")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -194,7 +282,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [6]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -203,34 +291,38 @@ tracks/2/path = NodePath("Sprite2D:frame_coords")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.033333335, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2i(0, 0), Vector2i(3, 0)]
+"values": [Vector2i(0, 0), Vector2i(5, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hvp3c"]
 _data = {
 &"Attack1": SubResource("Animation_nrk36"),
+&"Carica": SubResource("Animation_m3dml"),
+&"Compari": SubResource("Animation_pgmmj"),
 &"Guard": SubResource("Animation_ep6o4"),
 &"Idle": SubResource("Animation_xxtdb"),
 &"RESET": SubResource("Animation_xytba"),
 &"Run": SubResource("Animation_ssywa")
 }
 
-[node name="ArcereRosso" node_paths=PackedStringArray("animatore") instance=ExtResource("1_8vhip")]
-IDnemico = 1
-risorsa_nemico = ExtResource("2_lot1j")
-raggio_attacco = 300.0
+[node name="LancereRosso" node_paths=PackedStringArray("animatore") instance=ExtResource("1_rgfqi")]
+z_index = 1
+IDnemico = 2
+risorsa_nemico = ExtResource("2_soku4")
 animatore = NodePath("AnimationPlayer")
 
-[node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_lot1j")
-
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("4_lot1j")
+texture = ExtResource("4_rg3xy")
+hframes = 12
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+[node name="AnimazioniSpeciali" parent="." index="7"]
+frame = 10
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
 libraries = {
 &"": SubResource("AnimationLibrary_hvp3c")
 }

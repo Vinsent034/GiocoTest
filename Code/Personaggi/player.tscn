@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://sykr1cgub8dw"]
+[gd_scene load_steps=45 format=3 uid="uid://sykr1cgub8dw"]
 
 [ext_resource type="Script" uid="uid://di1yntkhdq12s" path="res://Code/Personaggi/Player/player.gd" id="1_wbvso"]
 [ext_resource type="Script" uid="uid://bpxo4ikised64" path="res://Code/Personaggi/Player/movimenti.gd" id="2_8jukx"]
@@ -13,7 +13,9 @@
 [ext_resource type="LabelSettings" uid="uid://wmlaa6luxfiu" path="res://Stili/StileLabel.tres" id="8_xxtdb"]
 [ext_resource type="Script" uid="uid://dunuhoew2ckoo" path="res://Code/Personaggi/Player/barra_exp.gd" id="12_barra_exp"]
 [ext_resource type="Script" uid="uid://b56caa6fa56e3" path="res://Code/Personaggi/Player/stat_player.gd" id="13_stat_player"]
+[ext_resource type="Texture2D" uid="uid://c5cgrsf1kr7de" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Bars/BigBar_Fill.png" id="15_8s6e0"]
 [ext_resource type="PackedScene" uid="uid://0r2aom22w6yp" path="res://Code/Armi/arma_lungo_raggio.tscn" id="15_ep6o4"]
+[ext_resource type="Texture2D" uid="uid://bavvu26ch2l50" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Bars/BigBar_Base.png" id="15_hvp3c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_65kfe"]
 radius = 8.0
@@ -366,25 +368,6 @@ _data = {
 &"Run": SubResource("Animation_ssywa")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-bg_color = Color(0.15, 0.15, 0.2, 0.85)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.35, 0.35, 0.45, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
-bg_color = Color(0.3, 0.85, 0.35, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_xytba"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qy6k8"]
@@ -411,6 +394,18 @@ corner_radius_bottom_left = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_hitbox"]
 radius = 12.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot7uf"]
+atlas = ExtResource("15_hvp3c")
+region = Rect2(40, 9, 24, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig4ju"]
+atlas = ExtResource("15_hvp3c")
+region = Rect2(128, 9, 64, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04j5h"]
+atlas = ExtResource("15_hvp3c")
+region = Rect2(256, 9, 24, 51)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 0
 script = ExtResource("1_wbvso")
@@ -418,6 +413,7 @@ difesa = 2
 schivata = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
 shape = SubResource("CircleShape2D_65kfe")
 
 [node name="Movimenti" type="Node" parent="." node_paths=PackedStringArray("animatore", "sprite", "hit_box")]
@@ -448,43 +444,9 @@ autoplay = "Idle"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="BarraVita" type="ProgressBar" parent="."]
+[node name="Marker2D" type="Marker2D" parent="."]
 z_index = 1
-offset_left = -273.0
-offset_top = -154.0
-offset_right = -233.0
-offset_bottom = -146.33333
-scale = Vector2(3, 3)
-theme_override_styles/background = SubResource("StyleBoxFlat_bg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
-value = 100.0
-show_percentage = false
-
-[node name="LabelPV" type="Label" parent="BarraVita"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.5
-offset_top = -1.4999542
-offset_right = 82.5
-offset_bottom = 44.833374
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.17, 0.17)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_font_sizes/font_size = 5
-text = "100"
-label_settings = ExtResource("8_xxtdb")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Marker2D" type="Marker2D" parent="BarraVita"]
-z_index = -1
-position = Vector2(91.00003, 48.999992)
+position = Vector2(-190, -143)
 scale = Vector2(0.3, 0.3)
 
 [node name="TimerInvincibilita" type="Timer" parent="."]
@@ -554,3 +516,61 @@ player = NodePath("..")
 
 [node name="ArmaLungoRaggio" parent="." instance=ExtResource("15_ep6o4")]
 position = Vector2(0, -12)
+
+[node name="FillVita" type="Control" parent="."]
+z_index = 1
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -275.0
+offset_top = -157.0
+offset_right = -124.0
+offset_bottom = -121.3
+
+[node name="Texture Vita" type="TextureRect" parent="FillVita"]
+z_index = 1
+layout_mode = 0
+offset_left = -30.8
+offset_top = -10.0
+offset_right = 175.86668
+offset_bottom = 54.0
+scale = Vector2(0.9, 0.7)
+texture = ExtResource("15_8s6e0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -282.10876
+offset_top = -161.34445
+offset_right = -46.108765
+offset_bottom = -110.34445
+scale = Vector2(0.7, 0.7)
+theme_override_constants/separation = -1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ot7uf")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ig4ju")
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ig4ju")
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ig4ju")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_04j5h")
+
+[node name="Label" type="Label" parent="."]
+z_index = 3
+offset_left = -220.49863
+offset_top = -152.93448
+offset_right = -163.49863
+offset_bottom = -98.93448
+scale = Vector2(0.3, 0.3)
+text = "100/100"
+label_settings = ExtResource("8_xxtdb")

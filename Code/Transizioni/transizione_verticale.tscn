@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Code/Transizioni/transizione_verticale.gd" id="1_trans"]
+
+[node name="TransizioneVerticale" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_trans")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)

@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b4f6smwetjpfp" path="res://Tiny Swords (Free Pack)/Units/Blue Units/Archer/Archer_Idle.png" id="11_ahekm"]
 [ext_resource type="PackedScene" uid="uid://iquitiqjx38w" path="res://Code/Proiettile/freccia_nemico.tscn" id="13_km6fe"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6coxk"]
-radius = 3.1622777
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gie00"]
 radius = 9.055386
@@ -122,7 +122,7 @@ marker_danno = NodePath("Marker2D")
 sprite_comparsa = NodePath("AnimazioniSpeciali")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_6coxk")
+shape = SubResource("CircleShape2D_body")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)

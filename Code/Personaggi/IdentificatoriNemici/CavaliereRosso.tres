@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CartaNemico" load_steps=4 format=3 uid="uid://caibvckc4ksiu"]
+
+[ext_resource type="Texture2D" uid="uid://f8ofi6kavggy" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="1_c7ba3"]
+[ext_resource type="Script" uid="uid://b2go0oxkcut8t" path="res://Code/Personaggi/IdentificatoriNemici/CartaNemico.gd" id="1_h0kqo"]
+[ext_resource type="PackedScene" uid="uid://ccxth78bo5dj4" path="res://Code/Personaggi/Nemici/Inseguitori/red_kinght.tscn" id="1_x8jmh"]
+
+[resource]
+script = ExtResource("1_h0kqo")
+nome = "CavaliereRosso"
+immagine = ExtResource("1_c7ba3")
+ScenaNemico = ExtResource("1_x8jmh")
+metadata/_custom_type_script = "uid://b2go0oxkcut8t"

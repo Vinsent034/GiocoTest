@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CartaNemico" load_steps=4 format=3 uid="uid://cqacvb8uvwa24"]
+
+[ext_resource type="PackedScene" uid="uid://b8al0litn41jd" path="res://Code/Personaggi/Nemici/Tiratore/arcere_rosso.tscn" id="1_0q3ky"]
+[ext_resource type="Script" uid="uid://b2go0oxkcut8t" path="res://Code/Personaggi/IdentificatoriNemici/CartaNemico.gd" id="1_0u2ad"]
+[ext_resource type="Texture2D" uid="uid://bibgl0r16wded" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_08.png" id="1_260do"]
+
+[resource]
+script = ExtResource("1_0u2ad")
+nome = "Arcere Rosso"
+ID_nemico = 1
+immagine = ExtResource("1_260do")
+ScenaNemico = ExtResource("1_0q3ky")
+metadata/_custom_type_script = "uid://b2go0oxkcut8t"

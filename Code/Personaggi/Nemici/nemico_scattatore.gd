@@ -202,5 +202,3 @@ func _gestisci_inseguimento() -> void:
 
 func _gestisci_attacco() -> void:
 	pass  # non usato
-
-

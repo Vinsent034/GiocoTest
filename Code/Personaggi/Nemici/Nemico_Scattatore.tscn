@@ -1,323 +1,22 @@
-[gd_scene load_steps=33 format=3 uid="uid://bnp76de6jjg1e"]
+[gd_scene load_steps=23 format=3 uid="uid://bnp76de6jjg1e"]
 
 [ext_resource type="PackedScene" uid="uid://d1qx5jmedw7c5" path="res://Code/Raccoglibili/Oro.tscn" id="3_pgmmj"]
 [ext_resource type="PackedScene" uid="uid://bsal1dey5fmt3" path="res://Code/Raccoglibili/Exp.tscn" id="4_50hph"]
-[ext_resource type="Texture2D" uid="uid://cdg84ig2thu4g" path="res://Tiny Swords (Free Pack)/Units/Red Units/Lancer/Lancer_Idle.png" id="5_0bu1y"]
 [ext_resource type="PackedScene" uid="uid://siixhv5xm6wc" path="res://Code/Raccoglibili/bistecca.tscn" id="5_ve51f"]
 [ext_resource type="PackedScene" uid="uid://b3f3tooxn6a1f" path="res://Code/Personaggi/Hurt and Hit Box/hit_box.tscn" id="7_8qble"]
 [ext_resource type="Texture2D" uid="uid://cbmhf245iwnoy" path="res://Tiny Swords (Free Pack)/Units/Red Units/Lancer/Lancer_Right_Attack.png" id="8_50hph"]
 [ext_resource type="Script" uid="uid://dhu64fyetubeg" path="res://Code/Personaggi/Hurt and Hit Box/hurt_box.gd" id="8_rp7t2"]
 [ext_resource type="Script" uid="uid://bc3rtprdeeii5" path="res://Code/Personaggi/Nemici/nemico_scattatore.gd" id="9_scatt"]
-[ext_resource type="Texture2D" uid="uid://bcix5pvphiwao" path="res://Tiny Swords (Free Pack)/Units/Red Units/Lancer/Lancer_Run.png" id="11_50hph"]
 [ext_resource type="Texture2D" uid="uid://olt0dj3mhpbj" path="res://Tiny Swords (Free Pack)/Particle FX/Dust_02.png" id="11_ve51f"]
-[ext_resource type="Texture2D" uid="uid://c2afag2q6yn2f" path="res://Tiny Swords (Free Pack)/Units/Red Units/Lancer/Lancer_Right_Defence.png" id="12_ve51f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gie00"]
 radius = 9.055386
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvfnm"]
 radius = 12.0
-
-[sub_resource type="Animation" id="Animation_nrk36"]
-resource_name = "Attack1"
-length = 0.51
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_50hph")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame_coords")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(1, 0), Vector2i(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-
-[sub_resource type="Animation" id="Animation_m3dml"]
-resource_name = "Carica"
-length = 0.51
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("12_ve51f")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame_coords")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(2, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-
-[sub_resource type="Animation" id="Animation_pgmmj"]
-resource_name = "Compari"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.033333335),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_50hph")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-
-[sub_resource type="Animation" id="Animation_ep6o4"]
-resource_name = "Guard"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("12_ve51f")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame_coords")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(5, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xxtdb"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_0bu1y")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame_coords")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(5, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xytba"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_0bu1y")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame_coords")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_ssywa"]
-resource_name = "Run"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("11_50hph")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame_coords")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.033333335, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(5, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvp3c"]
-_data = {
-&"Attack1": SubResource("Animation_nrk36"),
-&"Carica": SubResource("Animation_m3dml"),
-&"Compari": SubResource("Animation_pgmmj"),
-&"Guard": SubResource("Animation_ep6o4"),
-&"Idle": SubResource("Animation_xxtdb"),
-&"RESET": SubResource("Animation_xytba"),
-&"Run": SubResource("Animation_ssywa")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m03cq"]
 atlas = ExtResource("11_ve51f")
@@ -400,14 +99,14 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="NemicoScattatore" type="CharacterBody2D" node_paths=PackedStringArray("timer_inseguimento", "timer_preparazione", "animatore", "sprite", "hit_box", "hurt_box", "hurt_box_collision", "hit_box_collision", "marker_danno", "sprite_comparsa")]
+[node name="NemicoScattatore" type="CharacterBody2D" node_paths=PackedStringArray("timer_inseguimento", "timer_preparazione", "sprite", "hit_box", "hurt_box", "hurt_box_collision", "hit_box_collision", "marker_danno", "sprite_comparsa")]
+collision_layer = 0
 script = ExtResource("9_scatt")
 timer_inseguimento = NodePath("TimerInseguimento")
 timer_preparazione = NodePath("TimerPreparazione")
 drop_oro = ExtResource("3_pgmmj")
 drop_exp = ExtResource("4_50hph")
 drop_bistecca = ExtResource("5_ve51f")
-animatore = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 hit_box = NodePath("HitBox")
 hurt_box = NodePath("HurtBox")
@@ -417,11 +116,12 @@ marker_danno = NodePath("Marker2D")
 sprite_comparsa = NodePath("AnimazioniSpeciali")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_0bu1y")
-hframes = 12
+texture = ExtResource("8_50hph")
+hframes = 3
 frame = 1
 
 [node name="HitBox" parent="." instance=ExtResource("7_8qble")]
@@ -451,12 +151,6 @@ one_shot = true
 [node name="TimerPreparazione" type="Timer" parent="."]
 wait_time = 1.2
 one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hvp3c")
-}
-autoplay = "Idle"
 
 [node name="AnimazioniSpeciali" type="AnimatedSprite2D" parent="."]
 z_index = 1
