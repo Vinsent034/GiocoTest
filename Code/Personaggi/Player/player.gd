@@ -96,4 +96,6 @@ func _on_bistecca_raccolta(valore: int) -> void:
 
 
 func muori() -> void:
+	SaveManager.cancella()
+	SceneManager.vai_alla_home()
 	queue_free()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://br7r45v8xb3cv"]
+[gd_scene load_steps=13 format=3 uid="uid://br7r45v8xb3cv"]
 
 [ext_resource type="PackedScene" uid="uid://gjuf0b5hop6j" path="res://Code/Arena/Mappa/mappa.tscn" id="1_7cic3"]
 [ext_resource type="Script" uid="uid://qvnjoicc3bw7" path="res://Code/Arena/gestore_arena.gd" id="1_107eq"]
 [ext_resource type="PackedScene" uid="uid://sykr1cgub8dw" path="res://Code/Personaggi/player.tscn" id="1_eue3s"]
+[ext_resource type="PackedScene" uid="uid://b3jvgcudi3eqb" path="res://Code/Arena/IsolottoNeutrale/isolotto_pacifico.tscn" id="3_rt144"]
 [ext_resource type="Script" uid="uid://cj8jeyygbkaah" path="res://Code/Arena/QuestArena.gd" id="6_kj5iw"]
 [ext_resource type="Script" uid="uid://c408vn12yfiqc" path="res://Code/ContaOroGame/contatore_oro_partita.gd" id="7_gy0xo"]
 [ext_resource type="Texture2D" uid="uid://dvtbqj5ufop4y" path="res://Tiny Swords (Free Pack)/Terrain/Resources/Gold/Gold Stones/Gold Stone 1.png" id="7_p24i5"]
@@ -12,10 +13,12 @@
 [ext_resource type="Script" uid="uid://p4ua3lhwr5xc" path="res://Code/Personaggi/Nemici/spawner_nemici.gd" id="12_rt144"]
 [ext_resource type="PackedScene" path="res://Code/Transizioni/transizione_verticale.tscn" id="13_twy00"]
 
-[node name="Arena" type="Node2D" node_paths=PackedStringArray("LivelloL")]
+[node name="Arena" type="Node2D" node_paths=PackedStringArray("LivelloL", "ui_nemici")]
 script = ExtResource("1_107eq")
 mappe = Array[PackedScene]([ExtResource("1_7cic3"), ExtResource("1_7cic3")])
+isolotto = ExtResource("3_rt144")
 LivelloL = NodePath("SetLayer/LivelloArena")
+ui_nemici = NodePath("SetLayer/NemiciDaSconfiggere")
 
 [node name="Mappa" parent="." instance=ExtResource("1_7cic3")]
 Max_nemici_Spaun = 1

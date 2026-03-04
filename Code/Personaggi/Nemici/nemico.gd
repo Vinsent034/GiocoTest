@@ -19,9 +19,9 @@ class_name Nemico
 
 # --- Drop alla morte ---
 @export var drop_oro: PackedScene
-@export var drop_exp: PackedScene
 @export var drop_bistecca: PackedScene
 @export_range(0.0, 100.0, 1.0) var probabilita_bistecca: float = 20.0  # % di drop
+@export var exp_valore: int = 10
 
 signal morto
 
@@ -165,9 +165,18 @@ func muori() -> void:
 
 func _distruggi() -> void:
 	remove_from_group("Nemici")
+	_raccogli_exp()
 	emit_signal("morto")
 	Global.rilascio_id.emit(IDnemico)
 	queue_free()
+
+
+func _raccogli_exp() -> void:
+	if exp_valore <= 0:
+		return
+	ManagerRaccolata.raccogli(1, exp_valore)
+	if marker_danno:
+		MostraValore.crea(marker_danno, exp_valore, "ExpRaccolta")
 
 
 func _spawna_drop() -> void:
@@ -180,9 +189,9 @@ func _spawna_drop() -> void:
 	var bistecca_effettiva: PackedScene = null
 	if drop_bistecca and randf() * 100.0 < probabilita_bistecca:
 		bistecca_effettiva = drop_bistecca
-	var offsets := [Vector2(-12, -8), Vector2(12, -8), Vector2(0, 10)]
+	var offsets := [Vector2(-12, -8), Vector2(0, 10)]
 	var i := 0
-	for scena in [drop_oro, drop_exp, bistecca_effettiva]:
+	for scena in [drop_oro, bistecca_effettiva]:
 		if scena:
 			var oggetto = scena.instantiate()
 			parent.add_child(oggetto)

@@ -110,7 +110,6 @@ raggio_inseguimento = 300.0
 raggio_attacco = 250.0
 ritardo_attacco = 1.5
 drop_oro = ExtResource("3_ultsm")
-drop_exp = ExtResource("4_6coxk")
 drop_bistecca = ExtResource("5_kuknv")
 probabilita_bistecca = 50.0
 sprite = NodePath("Sprite2D")

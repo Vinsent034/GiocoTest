@@ -11,3 +11,4 @@ var stat_player: StatPlayer = null
 
 var RiferiemntoMappa: Mappa = null
 var LivelloPiano : int = 1
+var gestore_arena: Node = null

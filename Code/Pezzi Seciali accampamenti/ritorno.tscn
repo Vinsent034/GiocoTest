@@ -1,0 +1,156 @@
+[gd_scene load_steps=18 format=3 uid="uid://cvbltj0blid0g"]
+
+[ext_resource type="Texture2D" uid="uid://1k04je1fh8ah" path="res://Tiny Swords (Free Pack)/Buildings/Blue Buildings/House1.png" id="1_0upay"]
+[ext_resource type="Script" uid="uid://cw3c5lwfrq6oa" path="res://Code/Pezzi Seciali accampamenti/ritorno.gd" id="1_wbg84"]
+[ext_resource type="LabelSettings" uid="uid://wmlaa6luxfiu" path="res://Stili/StileLabel.tres" id="3_j7cgb"]
+[ext_resource type="Texture2D" uid="uid://bdxcfqo6lfnwb" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_07.png" id="4_8csdr"]
+[ext_resource type="Texture2D" uid="uid://cs34e5fwdlad5" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_08.png" id="5_7fsgv"]
+[ext_resource type="Texture2D" uid="uid://cgk56t3a01kmi" path="res://Tiny Swords (Free Pack)/Particle FX/Dust_01.png" id="6_j7cgb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q6ag"]
+size = Vector2(84, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0upay"]
+size = Vector2(82, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8csdr"]
+atlas = ExtResource("6_j7cgb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fsgv"]
+atlas = ExtResource("6_j7cgb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe2dp"]
+atlas = ExtResource("6_j7cgb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrxvk"]
+atlas = ExtResource("6_j7cgb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_echel"]
+atlas = ExtResource("6_j7cgb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84ja1"]
+atlas = ExtResource("6_j7cgb")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxyic"]
+atlas = ExtResource("6_j7cgb")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b435"]
+atlas = ExtResource("6_j7cgb")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l88li"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8csdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fsgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe2dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrxvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_echel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84ja1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxyic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b435")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"Compari",
+"speed": 10.0
+}]
+
+[node name="Ritorno" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 0
+script = ExtResource("1_wbg84")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 15)
+shape = SubResource("RectangleShape2D_7q6ag")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0upay")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Area2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 87.5)
+shape = SubResource("RectangleShape2D_0upay")
+
+[node name="MappaOpzionalità" type="Control" parent="."]
+visible = false
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = -294.0
+offset_top = -348.0
+offset_right = 272.0
+offset_bottom = 80.0
+
+[node name="Panel" type="Panel" parent="MappaOpzionalità"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 58.0
+offset_top = 114.0
+offset_right = 529.0
+offset_bottom = 351.0
+
+[node name="Label" type="Label" parent="MappaOpzionalità"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 128.0
+offset_right = 1710.0
+offset_bottom = 182.0
+text = "Vuoi ritornare alla base?"
+label_settings = ExtResource("3_j7cgb")
+
+[node name="TextureButton" type="TextureButton" parent="MappaOpzionalità"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 258.0
+offset_right = 416.0
+offset_bottom = 322.0
+texture_normal = ExtResource("4_8csdr")
+
+[node name="TextureButton2" type="TextureButton" parent="MappaOpzionalità"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 259.0
+offset_right = 200.0
+offset_bottom = 323.0
+texture_normal = ExtResource("5_7fsgv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 28)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_l88li")
+animation = &"Compari"
+frame = 8
+
+[connection signal="area_entered" from="Area2D" to="." method="Proposta"]
+[connection signal="button_down" from="MappaOpzionalità/TextureButton" to="." method="Ritorna"]
+[connection signal="button_down" from="MappaOpzionalità/TextureButton2" to="." method="Continua"]
