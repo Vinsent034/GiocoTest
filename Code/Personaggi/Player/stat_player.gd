@@ -53,3 +53,19 @@ func aumenta_fortuna(valore: int) -> void:
 func aumenta_velocita(valore: int) -> void:
 	_scaglioni_velocita += valore
 	player.velocita = _base_velocita * (1.0 + _scaglioni_velocita * 0.1)
+
+
+func to_save_dict() -> Dictionary:
+	return {
+		"base_potenza_attacco": _base_potenza_attacco,
+		"base_velocita": _base_velocita,
+		"scaglioni_attacco": _scaglioni_attacco,
+		"scaglioni_velocita": _scaglioni_velocita
+	}
+
+
+func from_save_dict(data: Dictionary) -> void:
+	_base_potenza_attacco = data.get("base_potenza_attacco", player.potenza_attacco)
+	_base_velocita        = data.get("base_velocita", player.velocita)
+	_scaglioni_attacco    = data.get("scaglioni_attacco", 0)
+	_scaglioni_velocita   = data.get("scaglioni_velocita", 0)

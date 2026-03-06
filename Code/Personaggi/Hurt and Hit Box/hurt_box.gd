@@ -26,7 +26,7 @@ func _su_area_entrata(area: Area2D) -> void:
 	ricevuto_colpo.emit(area)
 	var proprietario = get_parent()
 	if proprietario.has_method("subisci_danno"):
-		proprietario.subisci_danno(area.danno)
+		proprietario.subisci_danno(area.danno, area.critico)
 	var id := area.get_instance_id()
 	_hitbox_in_cooldown[id] = true
 	get_tree().create_timer(cooldown_colpo).timeout.connect(

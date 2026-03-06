@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://gjuf0b5hop6j"]
+[gd_scene load_steps=16 format=4 uid="uid://gjuf0b5hop6j"]
 
 [ext_resource type="Script" uid="uid://iw313lg51rem" path="res://Code/Arena/Mappa/mappa.gd" id="1_8al7w"]
 [ext_resource type="Texture2D" uid="uid://b8ygv8yr3r25l" path="res://Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color1.png" id="2_k1uym"]
 [ext_resource type="Resource" uid="uid://caibvckc4ksiu" path="res://Code/Personaggi/IdentificatoriNemici/CavaliereRosso.tres" id="2_krrhs"]
+[ext_resource type="Script" uid="uid://b2go0oxkcut8t" path="res://Code/Personaggi/IdentificatoriNemici/CartaNemico.gd" id="2_ujksl"]
 [ext_resource type="Resource" uid="uid://cqacvb8uvwa24" path="res://Code/Personaggi/IdentificatoriNemici/ArcereRosso.tres" id="3_ujksl"]
 [ext_resource type="Texture2D" uid="uid://ci4sc2oxsh4rf" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Banners/Banner.png" id="3_xs6tp"]
 [ext_resource type="Texture2D" uid="uid://c5p40bdtp1gd6" path="res://Tiny Swords (Free Pack)/Terrain/Tileset/Water Background color.png" id="4_krrhs"]
@@ -1039,9 +1040,7 @@ size = Vector2(61.834106, 11)
 script = ExtResource("1_8al7w")
 marker_entrata = NodePath("Blocco-Spaun/Marker2D")
 blocco = NodePath("Blocco-Spaun/StaticBody2D")
-Nemico1 = ExtResource("2_krrhs")
-Nemico2 = ExtResource("3_ujksl")
-Nemico3 = ExtResource("4_pvouo")
+carte_nemici = Array[ExtResource("2_ujksl")]([ExtResource("2_krrhs"), ExtResource("3_ujksl"), ExtResource("4_pvouo")])
 
 [node name="Terra" type="TileMapLayer" parent="."]
 z_index = -1

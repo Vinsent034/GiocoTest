@@ -35,7 +35,7 @@ func _ready() -> void:
 	timer_invincibilita.timeout.connect(_on_timer_invincibilita_timeout)
 	ManagerRaccolata.bistecca_raccolta.connect(_on_bistecca_raccolta)
 
-func subisci_danno(danno: int) -> void:
+func subisci_danno(danno: int, _is_critico: bool = false) -> void:
 	if not timer_invincibilita.is_stopped():
 		return
 	# Schivata: genera un numero da 1 a 100, se <= schivata il danno viene evitato
@@ -95,7 +95,31 @@ func _on_bistecca_raccolta(valore: int) -> void:
 	animazioni.play("new_animation")
 
 
+func to_save_dict() -> Dictionary:
+	return {
+		"salute": salute, "salute_massima": salute_massima,
+		"velocita": velocita, "potenza_attacco": potenza_attacco,
+		"attacco": attacco, "difesa": difesa,
+		"schivata": schivata, "critico": critico, "fortuna": fortuna
+	}
+
+
+func from_save_dict(data: Dictionary) -> void:
+	salute_massima    = data.get("salute_massima", salute_massima)
+	velocita          = data.get("velocita", velocita)
+	potenza_attacco   = data.get("potenza_attacco", potenza_attacco)
+	attacco           = data.get("attacco", attacco)
+	difesa            = data.get("difesa", difesa)
+	schivata          = data.get("schivata", schivata)
+	critico           = data.get("critico", critico)
+	fortuna           = data.get("fortuna", fortuna)
+	salute            = data.get("salute", salute_massima)
+	_aggiorna_barra_vita()
+
+
 func muori() -> void:
+	ManagerRaccolata.oro_totale = 0
+	ManagerRaccolata.oro_raccolto.emit(0)
 	SaveManager.cancella()
 	SceneManager.vai_alla_home()
 	queue_free()

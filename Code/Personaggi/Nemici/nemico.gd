@@ -131,10 +131,10 @@ func _gestisci_attacco() -> void:
 
 # --- Danno e morte ---
 
-func subisci_danno(danno: int) -> void:
+func subisci_danno(danno: int, is_critico: bool = false) -> void:
 	salute -= danno
 	if marker_danno:
-		MostraValore.crea(marker_danno, danno, "Danno")
+		MostraValore.crea(marker_danno, danno, "DannoCritico" if is_critico else "Danno")
 	if salute <= 0:
 		muori()
 

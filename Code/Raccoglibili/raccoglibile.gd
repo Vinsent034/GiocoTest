@@ -11,6 +11,7 @@ var _animazione_per_tipo := {
 }
 
 func _ready() -> void:
+	add_to_group("Raccoglibili")
 	area_entered.connect(_on_area_entered)
 
 

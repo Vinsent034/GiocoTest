@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://br7r45v8xb3cv"]
+[gd_scene load_steps=15 format=3 uid="uid://br7r45v8xb3cv"]
 
 [ext_resource type="PackedScene" uid="uid://gjuf0b5hop6j" path="res://Code/Arena/Mappa/mappa.tscn" id="1_7cic3"]
 [ext_resource type="Script" uid="uid://qvnjoicc3bw7" path="res://Code/Arena/gestore_arena.gd" id="1_107eq"]
@@ -10,6 +10,8 @@
 [ext_resource type="LabelSettings" uid="uid://wmlaa6luxfiu" path="res://Stili/StileLabel.tres" id="8_2h0a4"]
 [ext_resource type="Texture2D" uid="uid://f8ofi6kavggy" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Human Avatars/Avatars_06.png" id="9_twy00"]
 [ext_resource type="PackedScene" uid="uid://lyq13vir1fbg" path="res://Code/Bonus/bonus_statistiche_partita.tscn" id="11_kj5iw"]
+[ext_resource type="Texture2D" uid="uid://ba510vrsophwk" path="res://Tiny Swords (Free Pack)/UI Elements/UI Elements/Icons/Icon_10.png" id="11_twy00"]
+[ext_resource type="PackedScene" uid="uid://cedx38s1d4nqo" path="res://Code/Ui Menu/menu.tscn" id="12_107eq"]
 [ext_resource type="Script" uid="uid://p4ua3lhwr5xc" path="res://Code/Personaggi/Nemici/spawner_nemici.gd" id="12_rt144"]
 [ext_resource type="PackedScene" path="res://Code/Transizioni/transizione_verticale.tscn" id="13_twy00"]
 
@@ -17,6 +19,7 @@
 script = ExtResource("1_107eq")
 mappe = Array[PackedScene]([ExtResource("1_7cic3"), ExtResource("1_7cic3")])
 isolotto = ExtResource("3_rt144")
+Livello = 4
 LivelloL = NodePath("SetLayer/LivelloArena")
 ui_nemici = NodePath("SetLayer/NemiciDaSconfiggere")
 
@@ -26,6 +29,7 @@ Max_nemici_per_dentro_arena = 1
 
 [node name="Player" parent="." instance=ExtResource("1_eue3s")]
 position = Vector2(240.63638, 140.72726)
+critico = 100
 
 [node name="SetLayer" type="CanvasLayer" parent="."]
 
@@ -158,6 +162,22 @@ offset_bottom = 70.974365
 text = "Piano : 1"
 label_settings = ExtResource("8_2h0a4")
 
+[node name="TextureButton" type="TextureButton" parent="SetLayer"]
+offset_left = 1047.4047
+offset_top = 6.2760315
+offset_right = 1111.4047
+offset_bottom = 70.27603
+texture_normal = ExtResource("11_twy00")
+
+[node name="Menu" parent="SetLayer" node_paths=PackedStringArray("Bottone_apri_menu", "Scena_arena") instance=ExtResource("12_107eq")]
+visible = false
+offset_left = 378.0
+offset_top = 91.0
+offset_right = -381.0
+offset_bottom = -144.0
+Bottone_apri_menu = NodePath("../TextureButton")
+Scena_arena = NodePath("../..")
+
 [node name="SpaunerNemici" type="Node" parent="." node_paths=PackedStringArray("punti_spawn")]
 script = ExtResource("12_rt144")
 punti_spawn = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4")]
@@ -176,3 +196,4 @@ position = Vector2(765, 457)
 
 [node name="TransizioneVerticale" parent="." instance=ExtResource("13_twy00")]
 visible = false
+durata = 1.5

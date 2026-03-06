@@ -10,22 +10,11 @@ class_name Mappa
 
 
 
-@export var Nemico1: CartaNemico
-@export var Nemico2: CartaNemico
-@export var Nemico3: CartaNemico
-@export var Nemico4: CartaNemico
-@export var Nemico5: CartaNemico
-@export var Nemico6: CartaNemico
-@export var Nemico7: CartaNemico
-@export var Nemico8: CartaNemico
+@export var carte_nemici: Array[CartaNemico] = []
 
 
 func get_carte_nemici() -> Array[CartaNemico]:
-	var risultato: Array[CartaNemico] = []
-	for carta in [Nemico1, Nemico2, Nemico3, Nemico4, Nemico5, Nemico6, Nemico7, Nemico8]:
-		if carta != null:
-			risultato.append(carta)
-	return risultato
+	return carte_nemici.filter(func(c): return c != null)
 
 
 func _ready():

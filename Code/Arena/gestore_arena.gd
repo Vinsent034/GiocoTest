@@ -1,4 +1,6 @@
 extends Node2D
+class_name ArenaGame
+
 
 const INTERVALLO_ISOLOTTO: int = 5
 
@@ -17,6 +19,9 @@ func _ready() -> void:
 	_mappa_nodo = get_node_or_null("Mappa")
 	Global.AvviaTween.connect(_su_avvia_tween)
 	Global.gestore_arena = self
+	if not SaveManager.esiste():
+		ManagerRaccolata.oro_totale = 0
+		ManagerRaccolata.exp_totale = 0
 	call_deferred("_carica_da_salvataggio")
 
 
@@ -24,6 +29,7 @@ func _carica_da_salvataggio() -> void:
 	if not SaveManager.esiste():
 		return
 	caricato_da_file = true
+	await get_tree().process_frame
 	SaveManager.carica(self)
 	# Rimuove la mappa di default della scena
 	if _mappa_nodo:
@@ -63,6 +69,8 @@ func _carica_prossima_mappa() -> void:
 	if mappe.is_empty():
 		return
 
+	for r in get_tree().get_nodes_in_group("Raccoglibili"):
+		r.queue_free()
 	if _mappa_nodo:
 		_mappa_nodo.queue_free()
 		_mappa_nodo = null

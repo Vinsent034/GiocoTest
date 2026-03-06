@@ -7,6 +7,10 @@ extends Node2D
 
 var _timer_sparo: float = 0.0
 
+func _ready() -> void:
+	_timer_sparo = cadenza_sparo
+
+
 func _physics_process(delta: float) -> void:
 	var nemico_vicino := trova_nemico_piu_vicino()
 	if nemico_vicino:
@@ -14,6 +18,7 @@ func _physics_process(delta: float) -> void:
 		ray_cast.target_position = direzione * ray_cast.target_position.length()
 	else:
 		ray_cast.target_position = Vector2.RIGHT * ray_cast.target_position.length()
+		_timer_sparo = cadenza_sparo
 
 	_timer_sparo -= delta
 	if nemico_vicino and _timer_sparo <= 0.0:
@@ -24,9 +29,11 @@ func _physics_process(delta: float) -> void:
 func spara(bersaglio: Nemico) -> void:
 	if not scena_freccia:
 		return
-	var freccia := scena_freccia.instantiate()
+	var freccia := scena_freccia.instantiate() as FrecciaPlayer
 	freccia.global_position = global_position
 	freccia.direzione = (bersaglio.global_position - global_position).normalized()
+	if Global.player:
+		freccia.critico = Global.player.critico
 	get_tree().current_scene.add_child(freccia)
 
 

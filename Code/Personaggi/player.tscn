@@ -418,7 +418,7 @@ shape = SubResource("CircleShape2D_65kfe")
 
 [node name="Movimenti" type="Node" parent="." node_paths=PackedStringArray("animatore", "sprite", "hit_box")]
 script = ExtResource("2_8jukx")
-animatore = NodePath("../AnimationPlayer")
+animatore = NodePath("../AnimazioneCavaliereBlu")
 sprite = NodePath("../Sprite2D")
 hit_box = NodePath("../HitBox")
 
@@ -435,7 +435,7 @@ animation = &"new_animation"
 frame = 11
 frame_progress = 1.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimazioneCavaliereBlu" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_hvp3c")
 }

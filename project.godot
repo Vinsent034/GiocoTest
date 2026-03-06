@@ -21,6 +21,7 @@ Global="*res://Code/Singleton/global.gd"
 NemicoPool="*res://Code/Singleton/nemico_pool.gd"
 SceneManager="*res://Code/Singleton/scene_manager.gd"
 SaveManager="*res://Code/Singleton/save_manager.gd"
+CassaforteManager="*res://Code/Singleton/cassaforte_manager.gd"
 
 [global_group]
 
